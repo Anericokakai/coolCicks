@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchApiCategories } from "../Thunks/Thunks"
-
+import ReactPaginate from 'react-paginate'
 
 function Home() {
   console.log('anerico kakai')
@@ -22,6 +22,14 @@ if(error){
   return (
     <div>
       <h1>Home</h1>
+      <ReactPaginate  previousLabel={'previous'} nextLabel={'next'}
+      breakLabel={'...'}
+      pageCount={10}
+      marginPagesDisplayed={3}
+      pageRangeDisplayed={3}
+      
+      />
+      
     </div>
   )
 }
