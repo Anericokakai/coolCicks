@@ -32,6 +32,13 @@ function Home() {
         <ShoeCard />
         <ShoeCard />
         <ShoeCard />
+        <ShoeCard />
+        <ShoeCard />
+        <ShoeCard />
+        <ShoeCard />
+        <ShoeCard />
+        <ShoeCard />
+
       </div>
     </div>
   );
