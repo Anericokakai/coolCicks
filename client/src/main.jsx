@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import App from './App.jsx'
-import './index.css'
 import{store}from "./store/store"
 import {Provider} from "react-redux"
 const persistor =persistStore(store)
