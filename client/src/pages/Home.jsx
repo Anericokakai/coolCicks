@@ -1,9 +1,16 @@
-import { useEffect } from "react";
+
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchApiCategories } from "../Thunks/Thunks";
 import ReusableNav from "../components/ReusableNav";
 import "./home.scss";
 import ShoeCard from "../components/ShoeCard";
+
+import { useEffect } from "react"
+
+
+import ReactPaginate from 'react-paginate'
+
 
 function Home() {
   console.log("anerico kakai");
@@ -23,6 +30,7 @@ function Home() {
   }
 
   return (
+
     <div className="home-container">
       <ReusableNav />
 
@@ -38,9 +46,23 @@ function Home() {
         <ShoeCard />
         <ShoeCard />
         <ShoeCard />
+    
+     <div>
+      <h1>Home</h1>
+      <ReactPaginate  previousLabel={'previous'} nextLabel={'next'}
+      breakLabel={'...'}
+      pageCount={10}
+      marginPagesDisplayed={3}
+      pageRangeDisplayed={3}
+      
+      />
+      
+
+    </div>
 
       </div>
-    </div>
+
+   
   );
 }
 

@@ -1,6 +1,6 @@
 import mongoose, {Schema} from 'mongoose'
 
-const categoryShema=new Schema({
+const testSchema=new Schema({
 
 
 age:String,
@@ -38,4 +38,17 @@ tags:{
     collection:'test'
 })
 
-export const testCollection=mongoose.model('test',categoryShema)
+export const testCollection=mongoose.model('test',testSchema)
+
+
+
+// !CATEGORIES SCHEMA
+const  categoryShema=new Schema({
+    category_Name:String,
+},
+{
+    collection:"categories"
+}
+)
+export const categoryCollection=mongoose.model("categories",categoryShema)
+
