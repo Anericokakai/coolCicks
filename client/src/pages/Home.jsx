@@ -21,13 +21,13 @@ function Home() {
   }, [dispatch]);
   console.log(data);
 
-  if (error) {
-    return (
-      <div>
-        <h1>Network error</h1>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div>
+  //       <h1>Network error</h1>
+  //     </div>
+  //   );
+  // }
 
   return (
 
@@ -60,6 +60,7 @@ function Home() {
 
     </div>
 
+      </div>
       </div>
 
    
