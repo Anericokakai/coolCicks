@@ -1,17 +1,15 @@
-
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchApiCategories } from "../Thunks/Thunks";
-import ReusableNav from "../components/ReusableNav";
+import Navigation from "../components2/Navigation";
 import "./home.scss";
 import ShoeCard from "../components/ShoeCard";
 
-import { useEffect } from "react"
-import './paginate.css'
-import styled from 'react-paginate'
-import ReactPaginate from 'react-paginate'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import { useEffect } from "react";
+import "./paginate.css";
+import styled from "react-paginate";
+import ReactPaginate from "react-paginate";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 function Home() {
   console.log("anerico kakai");
   const dispatch = useDispatch();
@@ -29,16 +27,13 @@ function Home() {
   //   );
   // }
   // !handle page change
-  function handlePageChange(e){
+  function handlePageChange(e) {
     console.log(e);
-
   }
 
-
   return (
-
     <div className="home-container">
-      <ReusableNav />
+      <Navigation />
 
       <div className="all-shoes">
         <ShoeCard />
@@ -52,33 +47,32 @@ function Home() {
         <ShoeCard />
         <ShoeCard />
         <ShoeCard />
-    
-     <div>
-      <h1>Home</h1>
-      <ReactPaginate
-      activeClassName={'item active '}
-        breakClassName={'item break-me '}
-        breakLabel={'...'}
-        containerClassName={'pagination'}
-        disabledClassName={'disabled-page'}
-        marginPagesDisplayed={2}
-        nextClassName={"item next "}
-        nextLabel={<ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />}
-        onPageChange={handlePageChange}
-        pageCount={20}
-        pageClassName={'item pagination-page '}
-        pageRangeDisplayed={2}
-        previousClassName={"item previous"}
-        previousLabel={<ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />}
-      />
-      
 
+        
+      </div>
+      <div className="pagination">
+          <ReactPaginate
+            activeClassName={"item active "}
+            breakClassName={"item break-me "}
+            breakLabel={"..."}
+            containerClassName={"pagination"}
+            disabledClassName={"disabled-page"}
+            marginPagesDisplayed={2}
+            nextClassName={"item next "}
+            nextLabel={
+              <ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />
+            }
+            onPageChange={handlePageChange}
+            pageCount={20}
+            pageClassName={"item pagination-page "}
+            pageRangeDisplayed={2}
+            previousClassName={"item previous"}
+            previousLabel={
+              <ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />
+            }
+          />
+        </div>
     </div>
-
-      </div>
-      </div>
-
-   
   );
 }
 
