@@ -3,6 +3,8 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import { default_shopingRoutes } from './routes/homeRoutes.js'
 import { connectToDataBase } from './database/connection.js'
+import { addShoeRoute } from './routes/Admin/AddShoeRoute.js'
+import { LoginRoute, RegisterRoute } from './routes/RegistrationRoutes.js'
 
 
 // ! START OF CONFIGURING FILES
@@ -27,4 +29,16 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 // !ROUTES CONFIGURING  API END POINTS
 
+// todo  API END POINTS FOR GENERAL PRODUCTS AND CATEGORIES
+
+
 app.use(default_shopingRoutes)
+
+// ! REGISTRATION ROUTES
+app.use(RegisterRoute)
+app.use(LoginRoute)
+
+
+// !Admin routes
+app.use(addShoeRoute)
+

@@ -1,12 +1,12 @@
 import React from "react";
-import logo from "../assets/images/sport-shoe.png";
+import logo from "../assets/images/kicks/image4.jpg";
 
 function ShoeCard() {
   return (
     <div className="shoecard-cont">
       <div className="shoe-image">
-        
-        <img src={logo} alt="" />
+{/*         
+        <img src={logo} alt="" /> */}
       </div>
       <div className="shoe-desc">
         <h3>Nike Cosmic shoe</h3>

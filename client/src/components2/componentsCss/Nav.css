@@ -1,0 +1,127 @@
+*{
+    list-style: none;
+    font-family: 'Poppins', monospace;
+}
+
+:root{
+    --boxShadow:0px 20px 25px -5px rgba(0,0,0,0.1) , 0px 10px 10px -5px rgba(0,0,0,0.04) ;
+    --lightGrey:#edf2f4;
+    --pureWhite:#ffffff;
+}
+
+.nav{
+    height: 70px;
+    display: flex;
+    background: var(--pureWhite);
+    justify-content: space-between;
+    box-shadow:  var(--boxShadow);
+    padding: 0 2em;
+    align-items: center;
+    
+
+}
+
+.logoImage{
+    height: 100%;
+}
+.logoImage img{
+    height: 100%;
+}
+.uls{
+    display: flex;
+    gap: 3em;
+}
+.Navigations{
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.carts{
+    display: flex;
+    gap:  2em;
+
+}
+.fa-bars{
+    display: none;
+}
+
+.fa-bars,
+.cartIcon,
+.searchIcon{
+    cursor: pointer;
+}
+
+.cartIcon{
+    position: relative;
+}
+.count{
+    position: absolute;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: grid;
+    top: -13px;
+    right: -13px;
+    place-content: center;
+    color: var(--pureWhite);
+}
+.fa-left-long{
+    display: none;
+}
+@media (min-width:640px) {
+    .Navigations{
+        font-size: 18px;
+    }
+    
+}
+
+/* !small screen navigation for home page */
+@media (max-width:800px) {
+    .Navigations{
+        position: fixed;
+        background-color:var(--lightGrey) ;
+        height: 50vh;
+        top: 73px;
+        left: 0;
+        transform: translate(-50%,-50%);
+        width: 100%;
+        display: none;
+        place-content: center;
+        opacity: 1;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease ;
+    }
+
+.fa-bars{
+    display: block;
+}
+    .fa-left-long{
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        cursor: pointer;
+        font-size: 20px;
+        display: block;
+    }
+    .showNav{
+        display: grid;
+        opacity: 1;
+        transform: translateY(0);
+box-shadow:var(--boxShadow);
+border-radius: 10px;
+
+    }
+    
+}
+
+@media (max-width:540px) {
+    .nav{
+        padding: 0 .5em;
+    }
+    .logoImage img{
+        width: 90px;
+    }
+    
+}

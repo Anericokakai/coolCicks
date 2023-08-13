@@ -7,11 +7,11 @@ import "./home.scss";
 import ShoeCard from "../components/ShoeCard";
 
 import { useEffect } from "react"
-
-
+import './paginate.css'
+import styled from 'react-paginate'
 import ReactPaginate from 'react-paginate'
-
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 function Home() {
   console.log("anerico kakai");
   const dispatch = useDispatch();
@@ -28,6 +28,12 @@ function Home() {
   //     </div>
   //   );
   // }
+  // !handle page change
+  function handlePageChange(e){
+    console.log(e);
+
+  }
+
 
   return (
 
@@ -49,12 +55,21 @@ function Home() {
     
      <div>
       <h1>Home</h1>
-      <ReactPaginate  previousLabel={'previous'} nextLabel={'next'}
-      breakLabel={'...'}
-      pageCount={10}
-      marginPagesDisplayed={3}
-      pageRangeDisplayed={3}
-      
+      <ReactPaginate
+      activeClassName={'item active '}
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        containerClassName={'pagination'}
+        disabledClassName={'disabled-page'}
+        marginPagesDisplayed={2}
+        nextClassName={"item next "}
+        nextLabel={<ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />}
+        onPageChange={handlePageChange}
+        pageCount={20}
+        pageClassName={'item pagination-page '}
+        pageRangeDisplayed={2}
+        previousClassName={"item previous"}
+        previousLabel={<ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />}
       />
       
 

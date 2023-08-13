@@ -11,6 +11,7 @@ const  userSchema=new Schema({
 
     
     user_Phone:String,
+    password:String,
 },{
     collection:'users'
 })
