@@ -1,22 +1,6 @@
 import { categoryCollection, testCollection } from "../../database/schemas/categorySchema.js"
 
-// !MIDDLE WARE TO HANDLE THE  FILTERING API
-const filters_middleware=(req,res,next)=>{
 
-    const header =req.query.category
-    if(!header){
-        next()
-    }else{
-
-
-        // !filter the data  fill the pages of the same categories
-
-        // const filteredData= await 
-        
-    }
-
-
-}
 
 export const handle_HomeRoute_getRequset=async(req,res)=>{
     

@@ -18,7 +18,6 @@ HandleUserRegistration(req,res)
 
 export const LoginRoute=Router()
 LoginRoute.post('/api/coolcicks/v1/user_login',(req,res)=>{
-
     // ! FUNCTION TO HANDLE THE LOGIN LOGIC
     handleUserLogin(req,res)
 })

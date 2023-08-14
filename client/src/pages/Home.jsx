@@ -17,13 +17,14 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Navigation from "../components2/Navigation";
 
 function Home() {
-  console.log("anerico kakai");
+  
   const dispatch = useDispatch();
-  const { data, error, loading } = useSelector((state) => state.categoryApi);
+  const { data, error, loading ,cartItems,amount,total} = useSelector((state) => state.categoryApi);
   useEffect(() => {
     dispatch(fetchApiCategories());
   }, [dispatch]);
-  console.log(data);
+  console.log(data,cartItems);
+
 
   // if (error) {
   //   return (

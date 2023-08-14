@@ -47,6 +47,7 @@
 .fa-bars,
 .fa-xmark{
     display: none;
+    font-size: 20px;
 }
 
 .fa-bars,
@@ -136,6 +137,8 @@
 }
 .itemImage img{
     width: 60px;
+    object-fit: cover;
+    height: 70px;
 }
 .itemImage{
     display: flex;
@@ -146,9 +149,10 @@
 .selectedItem{
     display: flex;
     justify-content: space-between;
-    padding:0 1em;
+    padding:.2em 1em;
     border: 1px solid var(--lightGrey);
     border-radius: 20px;
+    margin-bottom:1em ;
 }
 
 .AddItem{
@@ -157,6 +161,28 @@
     gap: 1em;
 }
 
+.cartImage{
+    width: 70px;
+    height: 70px;
+    margin-right: .5em;
+    
+}
+.cartImage img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.fa-minus,
+.fa-plus{
+    cursor: pointer;
+
+}
+.fa-minus{
+    color: red;
+}
+.fa-plus{
+    color: green;
+}
 @media (min-width:640px) {
     .Navigations{
         font-size: 18px;
@@ -197,9 +223,8 @@
         display: block;
     }
     .showNav{
-        display: grid;
-        opacity: 1;
-        
+display: grid;
+opacity: 1;
 box-shadow:var(--boxShadow);
 border-radius: 10px;
 left: 0;
