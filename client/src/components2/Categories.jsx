@@ -9,9 +9,8 @@ function Categories() {
     const { data, error, loading ,cartItems,amount,total,parameter} = useSelector((state) => state.categoryApi);
     const { data2, error2, loading2 } = useSelector((state) => state.filteredApi);
 
-   
+   const categories=data.data
     console.log(data.data)
-    const categories=data.data
 
     useEffect(() => {
         dispatch(fetchApiCategories());
