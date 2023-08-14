@@ -4,12 +4,18 @@ import Navigation from "../components2/Navigation";
 import "./home.scss";
 import ShoeCard from "../components/ShoeCard";
 
-import { useEffect } from "react";
-import "./paginate.css";
-import styled from "react-paginate";
-import ReactPaginate from "react-paginate";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
+
+
+
+import { useEffect } from "react"
+import './paginate.css'
+import styled from 'react-paginate'
+import ReactPaginate from 'react-paginate'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import Navigation from "../components2/Navigation";
+
 function Home() {
   console.log("anerico kakai");
   const dispatch = useDispatch();
@@ -33,7 +39,9 @@ function Home() {
 
   return (
     <div className="home-container">
-      <Navigation />
+
+      <Navigation/>
+
 
       <div className="all-shoes">
         <ShoeCard />
