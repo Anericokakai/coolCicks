@@ -42,13 +42,15 @@
     gap:  2em;
 
 }
-.fa-bars{
+.fa-bars,
+.fa-xmark{
     display: none;
 }
 
 .fa-bars,
 .cartIcon,
 .searchIcon{
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -69,6 +71,9 @@
 }
 .fa-left-long{
     display: none;
+}
+.count small{
+    font-size: 12px;
 }
 @media (min-width:640px) {
     .Navigations{
@@ -94,7 +99,8 @@
         transition: opacity 0.3s ease, transform 0.3s ease ;
     }
 
-.fa-bars{
+.fa-bars,
+.fa-xmark{
     display: block;
 }
     .fa-left-long{

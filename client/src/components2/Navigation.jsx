@@ -46,7 +46,7 @@ const nav= document.querySelector(".Navigations")
                <li className='searchIcon'> <i class="fa-solid fa-magnifying-glass"></i></li> 
                <li className='cartIcon'> <i class="fa-solid fa-cart-shopping"></i>
                
-               <span className='count'>3</span>
+               <span className='count'><small >30</small></span>
                </li>
        <li>    { shownav?<i class="fa-solid fa-xmark" onClick={displayNav} ></i> :     <i class="fa-solid fa-bars" onClick={displayNav} ></i> }</li>
 
