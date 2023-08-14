@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchApiCategories } from "../Thunks/Thunks";
-import Navigation from "../components2/Navigation";
+
 import "./home.scss";
 import ShoeCard from "../components/ShoeCard";
 
