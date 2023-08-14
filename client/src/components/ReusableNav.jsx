@@ -2,7 +2,7 @@ import React from 'react';
 import logo from "../assets/images/sport-shoe.png";
 import like from "../assets/images/heart.png";
 import search from "../assets/images/search.png";
-
+import cart from "../assets/images/shopping-cart.png"
 function ReusableNav() {
   return (
     <div className="navbar">
@@ -36,6 +36,7 @@ function ReusableNav() {
             <div className="search">
                 <img  src={search} alt="search" />
                 <img  src={like} alt="liked" />
+                <img src={cart} alt="" />
             </div>
         </div>
 
