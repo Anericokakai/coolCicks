@@ -134,9 +134,28 @@
     box-shadow: var(--boxShadow);
     cursor: pointer;
 }
+.itemImage img{
+    width: 60px;
+}
+.itemImage{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.selectedItem{
+    display: flex;
+    justify-content: space-between;
+    padding:0 1em;
+    border: 1px solid var(--lightGrey);
+    border-radius: 20px;
+}
 
-
+.AddItem{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
 
 @media (min-width:640px) {
     .Navigations{
