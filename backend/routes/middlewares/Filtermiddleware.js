@@ -8,7 +8,7 @@ export const filters_middleware=async(req,res,next)=>{
         next()
     }else{
 
-     const result=  await   shoeCollection.aggregate([
+     const data=  await   shoeCollection.aggregate([
             {
                 $lookup:{
                     from:"categories",
@@ -30,7 +30,7 @@ export const filters_middleware=async(req,res,next)=>{
            
         ])
 
-        res.json(result)
+        res.status(200).json({data})
 
 
 

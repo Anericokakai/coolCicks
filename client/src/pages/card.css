@@ -1,0 +1,81 @@
+:root{
+    --boxShadow:0px 20px 25px -5px rgba(0,0,0,0.1) , 0px 10px 10px -5px rgba(0,0,0,0.04) ;
+    --lightGrey:#edf2f4;
+    --pureWhite:#ffffff;
+}
+.card{
+   
+    width: 246px;
+    min-height: 300px;
+    max-height: 400px;
+    border-radius: 10px;
+    box-shadow:var(--boxShadow) ;
+    background-color: var(--lightGrey);
+    
+}
+.shoeImage{
+    width: 100%;
+    height: 170px;
+    position: relative;
+    overflow: hidden;
+
+}
+.shoeImage img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+   border-top-right-radius:10px ;
+    border-top-left-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+.cardsHolder{
+    padding: 1em;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr ;
+ 
+
+}
+
+
+@media (min-width:900px) {
+    .cardsHolder{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+}
+@media (max-width:1326px) {
+    .cardsHolder{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+}
+@media (max-width:1060px) {
+    .cardsHolder{
+        gap: 1em;
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+    .card{
+       min-width: 200px;
+    }
+    
+}
+@media (max-width:800px) {
+    .cardsHolder{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .card{
+        width: 300px;
+    }
+   
+}
+@media (min-width:1609px) {
+    .cardsHolder{
+        grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+}

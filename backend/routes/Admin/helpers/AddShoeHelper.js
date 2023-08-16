@@ -18,7 +18,7 @@ const id=category_id._id
 const Add_new_shoe=await shoeCollection.create({
     shoe_name:name,
     shoe_Description:description,
-    $images:images,
+    images:images,
     purchases,
     tags,
     color,

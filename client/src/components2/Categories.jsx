@@ -29,7 +29,12 @@ function Categories() {
           
 
     }
-    console.log(parameter)
+    if (loading2){
+      return <div><h1>Loading ...</h1></div>
+    } else{
+      console.log(data2)
+    }
+    
   return (
     <div className='categoryContainer'>
         <p>Filter by categories</p>
@@ -40,9 +45,7 @@ function Categories() {
     return <button className='singleCategory' onClick={()=>fetchData(single.category_Name)} key={single._id}> { single.category_Name}</button>
 
     })
-//    data&& data.data.map(category=>
-//     //  
-//     )
+
 }
 
  </div>

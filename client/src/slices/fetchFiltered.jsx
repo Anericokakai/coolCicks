@@ -3,7 +3,7 @@ import { fetchDataUnderCategory } from "../Thunks/Thunks";
 
 
 const initialState={
-    data: [],
+    data2: [],
     loading2: false,
     error2: null,
 }
@@ -17,7 +17,7 @@ const fetchFilteredData= createSlice({
             state.loading2=true
         }).addCase(fetchDataUnderCategory.fulfilled,(state,action)=>{
             state.loading2=false
-            state.data=action.payload
+            state.data2=action.payload
             state.error2=null
         }).addCase(fetchDataUnderCategory.rejected,(state,action)=>{
             state.loading2=false
