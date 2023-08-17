@@ -39,19 +39,19 @@
 }
 
 
-@media (min-width:900px) {
+@media only screen  and (min-width:900px) {
     .cardsHolder{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
     
 }
-@media (max-width:1326px) {
+@media only screen  and (max-width:1326px) {
     .cardsHolder{
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     
 }
-@media (max-width:1060px) {
+@media only screen  and (max-width:1060px) {
     .cardsHolder{
         gap: 1em;
         grid-template-columns: 1fr 1fr 1fr ;
@@ -61,7 +61,7 @@
     }
     
 }
-@media (max-width:800px) {
+@media only screen  and (max-width:800px) {
     .cardsHolder{
         display: flex;
         flex-wrap: wrap;
@@ -73,9 +73,17 @@
     }
    
 }
-@media (min-width:1609px) {
+@media only screen  and (min-width:1609px) {
     .cardsHolder{
         grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+}
+
+@media only screen  and (min-width:1400px  ) and (max-width:1605px) {
+    .card{
+        width: 270px;
+        
     }
     
 }
