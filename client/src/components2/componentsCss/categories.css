@@ -12,18 +12,22 @@
     
 }
 
+
 .singleCategory:hover{
     background-color: var(--blue);
     color: var(--white);
 }
 .categoryContainer{
     padding:  1em;
+    height: 100px;
+    
+
 }
 .categories{
     display: flex;
 gap: 1em;
 padding: 1em 0;
-flex-wrap: wrap;
+overflow-x: scroll;
 
 }
 .categoryContainer p{

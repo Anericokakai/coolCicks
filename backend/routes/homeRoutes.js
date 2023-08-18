@@ -8,12 +8,20 @@ import { filters_middleware } from "./middlewares/Filtermiddleware.js";
 
 export const default_shopingRoutes= Router();
 // GET API DATA
-default_shopingRoutes.get('/api/coolcicks/v1/categories',filters_middleware,(req,res)=>{
+default_shopingRoutes.get('/api/coolcicks/v1/categories',(req,res)=>{
 
     // !handle the logic behind this route
     
 
     handle_HomeRoute_getRequset(req,res)
+})
+
+// !fetch the detailed slected category
+
+export const fetchDetailed_category=Router()
+
+fetchDetailed_category.get('/api/coolcicks/v1/categoryProduct',filters_middleware,(req,res)=>{
+    
 })
 
 

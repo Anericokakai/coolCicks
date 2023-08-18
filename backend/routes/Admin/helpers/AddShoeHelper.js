@@ -13,6 +13,7 @@ const  {name,description,price,images,tags,color,inStock,category,purchases}=req
 try {
     // ! FIND THE CATEGORY AND GET ITS ID 
 const category_id=await categoryCollection.findOne({category_Name:category})
+if(!category_id)return res.status(503).json({message:"category not found"})
 const id=category_id._id
 // !create a new shoe in the data base 
 const Add_new_shoe=await shoeCollection.create({

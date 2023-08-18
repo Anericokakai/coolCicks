@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { setParams } from '../slices/fetchApiSlice';
 import { fetchApiCategories, fetchDataUnderCategory } from '../Thunks/Thunks';
@@ -8,9 +9,9 @@ function Categories() {
     const dispatch=useDispatch()
     const { data, error, loading ,cartItems,amount,total,parameter} = useSelector((state) => state.categoryApi);
     const { data2, error2, loading2 } = useSelector((state) => state.filteredApi);
-
+const [selectedCategory,setSelectedCategory]=useState('')
    const categories=data.data
-    console.log(data.data)
+
 
     useEffect(() => {
         dispatch(fetchApiCategories());
@@ -31,8 +32,8 @@ function Categories() {
     }
     if (loading2){
       return <div><h1>Loading ...</h1></div>
-    } else{
-      console.log(data2)
+    } else if (error){
+      return <div> error </div>
     }
     
   return (
@@ -42,13 +43,17 @@ function Categories() {
  className="categories">
 {
   categories &&  categories.map(single=>{
-    return <button className='singleCategory' onClick={()=>fetchData(single.category_Name)} key={single._id}> { single.category_Name}</button>
+    return <button className='singleCategory' onClick={()=>{fetchData(single.category_Name)
+    setSelectedCategory(single.category_Name)
+    }} key={single._id}> { single.category_Name}</button>
 
     })
 
 }
 
  </div>
+
+ <p> { selectedCategory && selectedCategory}</p>
     </div>
   )
 }

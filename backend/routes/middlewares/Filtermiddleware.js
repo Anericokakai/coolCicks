@@ -3,7 +3,7 @@ import { shoeCollection } from "../../database/schemas/ShoeSchema.js"
 // !MIDDLE WARE TO HANDLE THE  FILTERING API
 export const filters_middleware=async(req,res,next)=>{
 
-    const header =req.query.category
+    const header =req.query.category||"teens"
     if(!header){
         next()
     }else{

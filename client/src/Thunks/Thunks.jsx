@@ -11,7 +11,7 @@ export const fetchApiCategories=createAsyncThunk('myApi/fetchcategories',async()
 
 
     export const fetchDataUnderCategory=createAsyncThunk('myApi/fetchProducts',async(parameter)=>{
-        const response =await axios.get(`http://localhost:7001/api/coolcicks/v1/categories?category=${parameter}`)
+        const response =await axios.get(`http://localhost:7001/api/coolcicks/v1/categoryProduct?category=${parameter}`)
         return response.data
     })
 

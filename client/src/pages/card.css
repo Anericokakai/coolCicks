@@ -2,6 +2,8 @@
     --boxShadow:0px 20px 25px -5px rgba(0,0,0,0.1) , 0px 10px 10px -5px rgba(0,0,0,0.04) ;
     --lightGrey:#edf2f4;
     --pureWhite:#ffffff;
+    --darkGrey:#403d39;
+    --Yellow:#ff9f1c;
 }
 .card{
    
@@ -38,6 +40,26 @@
 
 }
 
+.shoeDesc{
+    padding: 1em;
+}
+.desc{
+    color: var(--darkGrey);
+}
+.shoeBottom {
+    display: flex;
+    gap: 1em;
+}
+.addIcon{
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+    background-color:var(--Yellow) ;
+    color: var(--lightGrey);
+    cursor: pointer;
+
+}
+
 
 @media only screen  and (min-width:900px) {
     .cardsHolder{
@@ -61,6 +83,8 @@
     }
     
 }
+
+
 @media only screen  and (max-width:800px) {
     .cardsHolder{
         display: flex;
@@ -69,7 +93,7 @@
         justify-content: center;
     }
     .card{
-        width: 300px;
+        width: 320px;
     }
    
 }
@@ -84,6 +108,16 @@
     .card{
         width: 270px;
         
+    }
+    
+}
+@media only screen and (max-width:688px) {
+    .card{
+        width: 350px;
+        min-height: 350px;
+    }
+    .shoeImage{
+        height: 220px;
     }
     
 }

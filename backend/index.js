@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import { default_shopingRoutes } from './routes/homeRoutes.js'
+import { default_shopingRoutes, fetchDetailed_category } from './routes/homeRoutes.js'
 import { connectToDataBase } from './database/connection.js'
 import { addShoeRoute } from './routes/Admin/AddShoeRoute.js'
 import { LoginRoute, RegisterRoute } from './routes/RegistrationRoutes.js'
@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 
 app.use(default_shopingRoutes)
+app.use(fetchDetailed_category)
 
 // ! REGISTRATION ROUTES
 app.use(RegisterRoute)
