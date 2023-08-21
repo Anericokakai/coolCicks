@@ -30,11 +30,11 @@ const [selectedCategory,setSelectedCategory]=useState('')
           
 
     }
-    if (loading2){
-      return <div><h1>Loading ...</h1></div>
-    } else if (error){
-      return <div> error </div>
-    }
+    // if (loading2){
+    //   return <div><h1>Loading ...</h1></div>
+    // } else if (error){
+    //   return <div> error </div>
+    // }
     
   return (
     <div className='categoryContainer'>

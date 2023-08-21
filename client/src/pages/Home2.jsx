@@ -11,29 +11,28 @@ import logo7 from "../assets/images/kicks/i7.jpg";
 import logo8 from "../assets/images/kicks/i8.png";
 import logo9 from "../assets/images/kicks/i10.jpg";
 import "./card.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { AddItem, calculateTotals } from "../slices/fetchApiSlice";
 function Home2() {
-  const { data2, error2, loading2 } = useSelector((state) => state.filteredApi);
-  if (loading2) {
-    return (
-      <div>
-        {" "}
-        <h1>loading ...</h1>
-      </div>
-    );
-  } else if (error2) {
-    return (
-      <div>
-        <h1>internal server error</h1>
-      </div>
-    );
+
+  // !add items to cart function
+const dispatch=useDispatch()
+  const addToCart=(item)=>{
+  
+dispatch(AddItem(item))
+dispatch(calculateTotals())
+
   }
-  console.log(data2);
+
+
+  const { data2 } = useSelector((state) => state.filteredApi);
+ 
+  
 
   // ! function to tream the long arrays
   function treamSentence(string,n){
 
-    return string.length>n ?`${string.substring(0, n - 1)}....`:string
+    return string?.length>n ?`${string.substring(0, n - 1)}....`:string
 
 
 
@@ -44,23 +43,25 @@ function Home2() {
       <Categories />
       <div className="cardsHolder">
         {
-          data2 && data2.data.map(singleData=>(
+          data2 && data2?.data?.map(singleData=>(
 
-            <div className="card" key={singleData._id}>
+            <div className="card" key={singleData?._id}>
           <div className="shoeImage">
-            <img src={singleData.images[0]} alt="" />
+            <img src={singleData?.images[0]} alt="" />
           </div>
           <div className="shoeDesc">
-            <h3>{singleData.shoe_name }</h3>
+            <h3>{singleData?.shoe_name }</h3>
             <div className="aboutShoe">
-              <p className="desc">{treamSentence(singleData.shoe_Description ,50)}</p>
+              <p className="desc">{treamSentence(singleData?.shoe_Description ,50)}</p>
             </div>
             <div className="shoeBottom">
               <span>
-                <b>Ksh { singleData.price }</b>
+                <b>Ksh { singleData?.price }</b>
               </span>
               <span>
-                <button className="addIcon">
+                <button className="addIcon" onClick={()=>{
+                  addToCart(singleData)
+                }}>
                   <small>add to cart</small>{" "}
                   <i class="fa-solid fa-cart-shopping"></i>
                 </button>

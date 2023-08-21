@@ -8,6 +8,7 @@
     --lightGrey:#edf2f4;
     --pureWhite:#ffffff;
     --cartBg:#22333b;
+    --Yellow:#ff9f1c;
 }
 
 .nav{
@@ -243,4 +244,46 @@ transition: 1s;
         width: 90px;
     }
     
+}
+
+.NoItems{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    
+    
+
+
+
+}
+.NoItems h4{
+    padding-bottom: 2em;
+}
+.fa-face-sad-tear{
+    font-size: 50px;
+    padding-top: 1em;
+}
+
+.total{
+    background-color: #457b9d;
+    height: 40%;
+    border-radius: 20px;
+    padding: 1em;
+}
+.total p{
+    padding-bottom: 1em;
+    letter-spacing: 2px;
+}
+.cashOut{
+    width: 100%;
+    border-radius: 100vw;
+    padding: 1em 0;
+    border: none;
+    margin-top: 20%;
+    color:var(--pureWhite);
+    background-color: var(--Yellow);
+    cursor: pointer;
 }
