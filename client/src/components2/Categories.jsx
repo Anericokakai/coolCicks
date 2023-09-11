@@ -10,6 +10,7 @@ function Categories() {
     const { data, error, loading ,cartItems,amount,total,parameter} = useSelector((state) => state.categoryApi);
     const { data2, error2, loading2 } = useSelector((state) => state.filteredApi);
 const [selectedCategory,setSelectedCategory]=useState('')
+const btn= document.querySelector(".singleCategory")
    const categories=data.data
 
 
@@ -27,6 +28,11 @@ const [selectedCategory,setSelectedCategory]=useState('')
         // fetch the data of the selected category
         
              dispatch(fetchDataUnderCategory(category));
+if(btn.classList.contains("clicked")){
+  btn.classList.remove("clicked")
+}else{
+  btn.classList.add("clicked")
+}
           
 
     }
@@ -38,7 +44,7 @@ const [selectedCategory,setSelectedCategory]=useState('')
     
   return (
     <div className='categoryContainer'>
-        <p>Filter by categories</p>
+        <h1>Filter by categories</h1>
  <div 
  className="categories">
 {

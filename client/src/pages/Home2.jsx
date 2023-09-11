@@ -13,6 +13,8 @@ import logo9 from "../assets/images/kicks/i10.jpg";
 import "./card.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddItem, calculateTotals } from "../slices/fetchApiSlice";
+import LandingPAge from "../components2/LandingPAge";
+import Trending from "../components2/componentsCss/Trending";
 function Home2() {
 
   // !add items to cart function
@@ -40,6 +42,7 @@ dispatch(calculateTotals())
   return (
     <div>
       <Navigation />
+    
       <Categories />
       <div className="cardsHolder">
         {
@@ -72,6 +75,8 @@ dispatch(calculateTotals())
           ))
         }
       </div>
+
+      <Trending></Trending>
     </div>
   );
 }
