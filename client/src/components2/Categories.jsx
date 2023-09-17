@@ -9,7 +9,7 @@ function Categories() {
     const dispatch=useDispatch()
     const { data, error, loading ,cartItems,amount,total,parameter} = useSelector((state) => state.categoryApi);
     const { data2, error2, loading2 } = useSelector((state) => state.filteredApi);
-const [selectedCategory,setSelectedCategory]=useState('')
+
 const btn= document.querySelector(".singleCategory")
    const categories=data.data
 
@@ -18,22 +18,15 @@ const btn= document.querySelector(".singleCategory")
         dispatch(fetchApiCategories());
       }, [dispatch]);
 
-    //   !fetch data of that category clicked
-    const fetchData=(category)=>{
-        const newUrl=new URL(window.location.href)
+    
+    
+            //   !fetch data of that category clicked
+   
+             //  ! redirect after click to the category page 
+            // !  add more filters  on the ctegory page
+    const handleRedirects=(category)=>{
 
-        newUrl.searchParams.set("category",category)
-        window.history.pushState({},"",newUrl)
-
-        // fetch the data of the selected category
-        
-             dispatch(fetchDataUnderCategory(category));
-if(btn.classList.contains("clicked")){
-  btn.classList.remove("clicked")
-}else{
-  btn.classList.add("clicked")
-}
-          
+      window.location.href=`/selectedCategory?category=${category}`
 
     }
     // if (loading2){
@@ -44,13 +37,14 @@ if(btn.classList.contains("clicked")){
     
   return (
     <div className='categoryContainer'>
-        <h1>Filter by categories</h1>
+        <h1 className='headings'>Filter by categories</h1>
  <div 
  className="categories">
 {
   categories &&  categories.map(single=>{
-    return <button className='singleCategory' onClick={()=>{fetchData(single.category_Name)
-    setSelectedCategory(single.category_Name)
+    return <button className='singleCategory' onClick={()=>{
+      handleRedirects(single.category_Name)
+ 
     }} key={single._id}> { single.category_Name}</button>
 
     })
@@ -59,7 +53,7 @@ if(btn.classList.contains("clicked")){
 
  </div>
 
- <p> { selectedCategory && selectedCategory}</p>
+
     </div>
   )
 }

@@ -5,6 +5,11 @@
     --darkGrey:#403d39;
     --Yellow:#ff9f1c;
 }
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .card{
    
     width: 246px;
@@ -60,11 +65,63 @@
 
 }
 
+/* !INSPECTION PAGE FOR THE SELECTED ITEM */
+.small_images{
+    display: flex;
+}
+.small_images img{
+    width: 60px;
+    
+}
+.wideViewImage{
+    border-radius: 20px;
+    border: 1px solid var(--Yellow);
+    height: 400px;
+    min-width: 300px;
+    max-width: 600px;
+    
+    place-content: center;
+    margin-bottom: 1em;
+}
+
+.wideViewImage img{
+    border-radius: inherit;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.inspectdetails{
+    min-width: 300px;
+    max-width: 500px;
+
+}
+
+
+.inspectContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 1em;
+    place-content: center;
+    padding: 2em;
+}
+
+.secondCash{
+    margin: 1em;
+    font-size: 17px;
+    width: 100%;
+}
+.Add_tocart{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+}
 
 @media only screen  and (min-width:900px) {
     .cardsHolder{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
+    
     
 }
 @media only screen  and (max-width:1326px) {
@@ -121,3 +178,23 @@
     }
     
 }
+@media (max-width:640px) {
+    .wideViewImage {
+        height: 300px;
+    }
+   .wideViewImage img{
+    object-fit: contain;
+   }
+   .Add_tocart{
+    padding-right: 1.5em;
+   }
+
+   .secondCash{
+    font-size: 15px;
+   }
+    
+}
+
+
+
+

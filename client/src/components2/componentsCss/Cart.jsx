@@ -39,9 +39,9 @@ function Cart() {
             </div>
           </div>
           <div className="AddItem">
-            <i class="fa-solid fa-minus" onClick={()=>minusItem(single)}></i>
+            <i className="fa-solid fa-minus" onClick={()=>minusItem(single)}></i>
             <p>{single.amount}</p>
-            <i class="fa-solid fa-plus" onClick={()=>addItem(single)}></i>
+            <i className="fa-solid fa-plus" onClick={()=>addItem(single)}></i>
           </div>
         </div>
         })
@@ -51,7 +51,7 @@ function Cart() {
       </div>
       
       <div>
-      <i class="fa-solid fa-face-sad-tear"></i></div></div>}
+      <i className="fa-solid fa-face-sad-tear"></i></div></div>}
 
       <div className="total"> <p>total items : {amount}</p>
       <p>total cash : {total}</p>

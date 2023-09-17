@@ -9,7 +9,10 @@ const ShoeShema=new Schema({
             type:String
         }
     ],
-    purchases:Number,
+    purchases:{
+        type:Number,
+        default:0
+    },
     tags:[
         {
             type:String
@@ -17,12 +20,17 @@ const ShoeShema=new Schema({
     ],
     color:String,
 
+    amount:{
+        type:Number,
+        default:1
+    },
     inStock:Number,
     ShoeBrand:String,
     categoryId:{
         type:Schema.Types.ObjectId,
         ref:'categories'
     }
+    
 },{
     collection:'shoes'
 

@@ -1,6 +1,6 @@
 import React from "react";
 import one from "../assets/images/2b.png";
-import '../pages/home.css'
+
 function LandingPAge() {
   return (
     <div className="landingPage">

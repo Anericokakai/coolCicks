@@ -7,7 +7,7 @@ import { categoryCollection } from '../../../database/schemas/categorySchema.js'
 // !FUNCTION TO CREATE A NEW SHOE AND ADD TO THE DATABASE
 export const Add_Shoe_Function=async(req,res)=>{
 
-const  {name,description,price,images,tags,color,inStock,category,purchases}=req.body
+const  {name,description,price,images,tags,color,inStock,category,brand}=req.body
 
 
 try {
@@ -20,12 +20,12 @@ const Add_new_shoe=await shoeCollection.create({
     shoe_name:name,
     shoe_Description:description,
     images:images,
-    purchases,
     tags,
     color,
     price,
     inStock,
-    categoryId:id
+    categoryId:id,
+    ShoeBrand:brand
 })
 res.status(200).json({message:'product added succssesfully'})
     

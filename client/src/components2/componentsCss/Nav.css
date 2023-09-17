@@ -9,6 +9,8 @@
     --pureWhite:#ffffff;
     --cartBg:#22333b;
     --Yellow:#ff9f1c;
+    --lightDark:#030d1185;
+    --lightBlue:#0fa3b1;
 }
 
 .nav{
@@ -33,11 +35,6 @@
 .uls{
     display: flex;
     gap: 3em;
-}
-.Navigations{
-    display: flex;
-    justify-content: space-between;
-    gap: 2em;
 }
 
 .carts{
@@ -73,9 +70,7 @@
     place-content: center;
     color: var(--pureWhite);
 }
-.fa-left-long{
-    display: none;
-}
+
 .count small{
     font-size: 12px;
 }
@@ -195,46 +190,96 @@
     
 }
 
+/* nav home background */
+
+
 /* !small screen navigation for home page */
-@media (max-width:800px) {
+
     .Navigations{
         position: fixed;
-        background-color:var(--lightGrey) ;
-        height: 50vh;
-        top: 73px;
+        background-color:var(--lightDark) ;
+        height: 100vh;
+        
+        top: 0;
         left: -100%;
         transform: translate(-50%,-50%);
-        width: 300px;
+        width: 100%;
         display: none;
-        place-content: center;
+       
         opacity: 0;
         transform: translateY(-10px);
         transition:  1s ease ;
+        z-index: 100;
+        border-radius: 0;
+    }
+    .categories_for_nav_container{
+        width: 300px;
+        left: 0;
+        
+        overflow-y: scroll;
+        background-color:var(--pureWhite);
+    }
+
+    .user_logedInInfo{
+        background-color: var(--cartBg);
+        height: 50px;
+        display: grid;
+        place-content: center;
+        color: var(--pureWhite);
+        font-weight: 700;
     }
 
 .fa-bars,
 .fa-xmark{
     display: block;
 }
-    .fa-left-long{
+    #xmark_for_nav_container{
         position: absolute;
         top: 1em;
-        right: 1em;
+        left: 10.5em;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 30px;
         display: block;
+        color: var(--pureWhite);
     }
     .showNav{
 display: grid;
 opacity: 1;
 box-shadow:var(--boxShadow);
-border-radius: 10px;
+
 left: 0;
 transition: 1s;
 
+
     }
     
-}
+
+
+    /* !DROP DOWN FOR THE NVIGATION */
+
+    .shopBy_category_child{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding:.2em 1em;
+        font-size: 20px;
+
+
+    }
+    .drop_down{
+        display: none;
+        padding: 1em;
+    }
+    
+    .fa-chevron-right {
+        cursor: pointer;
+  
+
+    }
+    .drop {
+        display: block;
+    }
+
 
 @media (max-width:540px) {
     .nav{
@@ -286,4 +331,97 @@ transition: 1s;
     color:var(--pureWhite);
     background-color: var(--Yellow);
     cursor: pointer;
+}
+
+ /* SEARCH BARS  */
+.searchBar{
+    display: flex;
+    place-content: center;
+    padding: 1em 1em;
+    background-color: #403d39;
+    align-items: center;
+    
+    
+}
+.search{
+    padding: 12px 1em;
+    width: 90%;
+    border: none;
+    font-size: 17px;
+    border-radius:10px ;
+    letter-spacing: 0;
+    
+}
+.search:focus{
+    outline: none;
+}
+/* .search:focus + .searchContainer{
+    border: 1px solid var(--lightBlue);
+    background-color: tomato;
+} */
+.searchContainer{
+    width: 70%;
+    background-color: var(--pureWhite);
+border-radius: 10px;
+display: flex;
+justify-content: space-between;
+position: relative;
+}
+.seachbtn{
+    border: none;
+    width: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.fa-magnifying-glass{
+    font-size: 20px;
+}
+
+.searchResults{
+    position:absolute ;
+    background-color: var(--pureWhite);
+    width: 100%;
+    top: 109%;
+    z-index: 50;
+letter-spacing: 1px;
+line-height: 20px;
+border-radius: 20px;
+    box-shadow: var(--boxShadow);
+
+}
+.searchResults p{
+    padding-left: 1em;
+    line-height: 30px;
+    cursor: pointer;
+    color: var(--lightBlue);
+}
+.searchResults p:hover{
+    background-color: var(--lightGrey);
+    border-radius: 20px;
+    
+}
+
+.loader{
+    height: 100px;
+    position: relative;
+
+}
+.loadingInfo{
+    position: absolute;
+    top: 80%;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    width: 100%;
+    text-align: center;
+}
+.loader img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media (max-width:640px) {
+    .searchContainer{
+        width: 90%;
+    }
+    
 }

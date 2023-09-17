@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchDataUnderCategory } from "../Thunks/Thunks";
+import { fetchDataUnderCategory, fetch_data_underFilters } from "../Thunks/Thunks";
 
 
 const initialState={
@@ -23,6 +23,17 @@ const fetchFilteredData= createSlice({
             state.loading2=false
             state.error2=action.error.message
         })
+        builder.addCase(fetch_data_underFilters.pending,(state)=>{
+            state.loading2=true
+        }).addCase(fetch_data_underFilters.fulfilled,(state,action)=>{
+state.loading2=false
+state.data2=action.payload
+
+        })
+        .addCase(fetch_data_underFilters.rejected,(state,action)=>{
+            state.error2=action.error.message
+        })
     }
+    
 })
 export default fetchFilteredData.reducer

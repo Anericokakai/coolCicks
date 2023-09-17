@@ -3,13 +3,28 @@ import { categoryCollection, testCollection } from "../../database/schemas/categ
 
 
 export const handle_HomeRoute_getRequset=async(req,res)=>{
+
+     // ! categories randomly selected
+     const randomcategoriesFromDb = await categoryCollection.distinct(
+        "category_Name"
+      );
+  
+      // !loop through the categories
+      let randomCategory = [];
+      randomcategoriesFromDb.forEach((single_category) => {
+        randomCategory.push(single_category);
+      });
+  
+      const randomCategoryNumber = Math.floor(
+        Math.random() * randomCategory.length
+      );
     
     // !destructure the category from the header
-    const category =req.query.category||"sneakers"
+    const category =req.query.category||randomCategory[randomCategoryNumber]
 // ! GET DATA
    try {
     
-    const data=await categoryCollection.find().limit(50)
+    const data=await categoryCollection.find()
     res.status(200).json({
         data
     })
@@ -19,6 +34,8 @@ export const handle_HomeRoute_getRequset=async(req,res)=>{
    }
 
     }
+
+    
 
 
 

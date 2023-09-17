@@ -1,11 +1,13 @@
-import Home from "../pages/Home";
+import EachCategory from "../components/EachCategory";
+import InspectPage from "../components/InspectPage";
+
 import Home2 from "../pages/Home2";
 import PageNotFound from "../pages/PageNotFound";
 
 export const navigationroutes =[
     {
         path:'/',
-        element:<Home></Home>
+        element:<Home2></Home2>
     }
     ,
     {
@@ -13,7 +15,12 @@ export const navigationroutes =[
         element :<PageNotFound></PageNotFound>
     },
     {
-    path:'/home2',
-    element:<Home2></Home2>
+        path:"/selectedCategory",
+        element:<EachCategory/>
+    },
+    {
+        path:'/inspect',
+        element:<InspectPage></InspectPage>
     }
+    
 ]
