@@ -10,10 +10,13 @@ function ReusableCard({singleData}) {
 
   }
 
+  // ! redirect on click to inspect the product
+
+const redirectToInspect=(info)=>window.location.href=`/inspect?image=${info?.images}&desc=${info?.shoe_Description}&name=${info?.shoe_name}&tags=${info?.tags}&color=${info?.color}&instock=${info?.inStock}&price=${info?.price}&purchase=${info?.purchases}`
 // !  Cart functionalities for totals calculations 
   return (
     <div>
-           <div className="card" key={singleData?._id}>
+           <div className="card" key={singleData?._id} onClick={()=>redirectToInspect(singleData)}>
           <div className="shoeImage">
             <img src={singleData?.images[0]} alt="" />
           </div>

@@ -33,6 +33,7 @@ export const filters_middleware = async (req, res, next) => {
     const randomColorNumber = Math.floor(Math.random() * randomColors.length);
     const header = req.query.category || randomCategory[randomCategoryNumber];
     const priceFilter = req.query.price || 1;
+    const id=req.query.id
 
     const companyFilter = req.query.company || "nike";
 
@@ -51,11 +52,13 @@ export const filters_middleware = async (req, res, next) => {
       },
       {
         $match: {
-           "categoryData.category_Name": header ,
-          // $or: [
+           
+          $or: [
+            {"categoryData.category_Name": header },
+            {"categoryData._id":id},
  
-          //   { color: colorFilter },
-          // ],
+            //  { color: colorFilter }
+          ],
         },
       },
       {

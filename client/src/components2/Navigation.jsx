@@ -8,6 +8,9 @@ import Cart from "./componentsCss/Cart";
 import "./componentsCss/Nav.css";
 import loadImage from "../assets/images/load.gif";
 function Navigation() {
+
+  // ! fetch suggestion on click event
+  
   //  !select the navigation
   const nav = document.querySelector(".Navigations");
   const [showCart, setShowCart] = useState(false);
@@ -75,11 +78,10 @@ function Navigation() {
 
   // ! search filteer directly from the database
 
-  const search = document.querySelector(".search");
+
 
   const handleSearchChange = (e) => {
     let inputVal = e.target.value;
-    console.log(inputVal);
 
     if (!inputVal) {
       setShowSearchResults(false);
@@ -87,7 +89,7 @@ function Navigation() {
       SearchItem(inputVal, setLoadingItems)
         .then((data) => {
           setLoadingItems(false);
-          console.log(data);
+
           setSearchItems(data.results);
         })
         .catch((error) => {
@@ -98,14 +100,26 @@ function Navigation() {
     }
   };
   const handleFocusChage = () => {
-    setShowSearchResults(false);
+    // setShowSearchResults(false);
   };
+
+  const HandleClickSearch = (query ) => {
+    setShowSearchResults(false);
+    SearchItem(query,setLoadingItems).then(data=>{
+      const data_search=data.results[0]
+      console.log(data_search)
+       window.location.href=`/inspect?image=${data_search?.images}&desc=${data_search?.shoe_Description}&name=${data_search?.shoe_name}&tags=${data_search?.tags}&color=${data_search?.color}&instock=${data_search?.inStock}&price=${data_search?.price}&purchase=${data_search?.purchases}`
+
+    })
+   
+  };
+  
 
   return (
     <div>
       <nav className="nav">
         <div className="logoImage">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" onClick={()=>window.location.href='/'} />
         </div>
         <div></div>
         <ul className="uls">
@@ -205,8 +219,9 @@ function Navigation() {
                   searchItems?.map((single_item) => {
                     return (
                       <div key={single_item._id}>
-                        <p >{single_item?.shoe_name}</p>
-           
+                        <p onClick={()=>HandleClickSearch(single_item.shoe_name)}>
+                          {single_item?.shoe_name}
+                        </p>
                       </div>
                     );
                   })
@@ -216,7 +231,10 @@ function Navigation() {
                     <p className="loadingInfo"> loading items... </p>
                   </div>
                 ) : searchItems.length < 1 ? (
-                  <p> item not found</p>
+                  <div className="noItem">
+                    <p> item not found </p>
+                    <i className="fa-solid fa-face-sad-tear"></i>
+                  </div>
                 ) : (
                   <></>
                 )}

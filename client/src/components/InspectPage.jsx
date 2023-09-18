@@ -10,37 +10,52 @@ function InspectPage() {
 
     //! handle click events to set images 
 
+// /inspect?image=${info?.images}&desc=${info?.shoe_Description}&name=${info?.shoe_name}&tags=${info?.tags}&color=${info?.color}&instock=${info?.inStock}&price=${info?.price}&purchase=${info?.purchases}
+    const infoParams=new URLSearchParams(window.location.search)
+    const singleData=infoParams.get("image")
+    const desc=infoParams.get("desc")
+    const name=infoParams.get('name')
+    const tags=infoParams.get('tags')
+    const color=infoParams.get('color')
+    const instock=infoParams.get('instock')
+    const price=infoParams.get('price')
+    const purchase=infoParams.get('purchase')
 
-  document.addEventListener('DOMContentLoaded',()=>{
-    alert("loaded")
-    const small_images=document.querySelectorAll('.small_images img')
-  const large_image=document.querySelector('.wideViewImage')
-  let previousSelectedImg=small_images[0]
-  console.log(large_image);
-  console.log(small_images);
-       // !add click functionality for small images
-       small_images?.forEach((one)=>{
+    let tags_string = ''
+
+    for(let x in tags){
+      tags_string+=tags[x]
+    }
+const image_array= singleData?.split(',')
+console.log(image_array)
+
+   
+    
+
+
+
   
+    
+            // ! handle click functionality to the small images
+            const handleClick=(image,e)=>{
+              
+              const large_image=document.querySelector('.wideViewImage')
+let newImage=document.createElement('img')
+newImage.src=image
+large_image.innerHTML=''
+if(e.target.style.border!='none'){
+  e.target.style.border='none'
+}else{
+  e.target.style.border='1px solid blue'
+}
 
-        one.addEventListener('click',function () {
 
-          
+large_image.appendChild(newImage)
 
 
-            one.style.borderRadius='10px'
-            const newImg=document.createElement("img")
-            newImg.src=one.src
-            large_image.innerHTML=''
-             large_image.append(newImg)
-             if(previousSelectedImg){
-              previousSelectedImg.style.border='none'
-             }
-             one.style.border="1px solid red"
-             previousSelectedImg=small_images
-          })
-            })
+            }
 
-  })
+  
 
 
 
@@ -52,29 +67,34 @@ function InspectPage() {
       <div className="inspectContainer">
         <div className="inspectImage">
           <div className="wideViewImage" >
-            <img src={nike1} alt="wide image inspect"  id="wideImage" />
+            <img src={image_array[0]} alt="wide image inspect"  id="wideImage" />
           </div>
           <div className="small_images">
-            <img src={nike1} alt="" />
+      {
+        image_array.map(single_image=> <img key={single_image} onClick={(e)=>{handleClick(single_image,e)}}  className="imgs" src={single_image} alt="" />)
+      }
 
-            <img src={nike2} alt="" />
+           
+          </div>
 
-            <img src={nike3} alt="" />
+          <div className="moreInfo">
+            <h4>purchases Made: <span>{purchase}</span></h4>
+            <h4>In stock :<span>{instock}</span></h4>
+            <h4>color : <span>{color}</span></h4>
+            <h4>Tags: <span>{tags_string}</span></h4>
 
-            <img src={nike4} alt="" />
 
-            <img src={nike5} alt="" />
           </div>
         </div>
         <div className="inspectdetails">
             <h2 className="headings">
-            PUMA mens Redon Bungee Lace Up Sneakers
+ {name}
             </h2>
-            <p> price :KES5,177.81 - KES8,064.99</p>
+            <p> price : <span>{ price}</span></p>
             <h3 className="headings">
                 descriptions
             </h3>
-            <p>Lightweight and slim, these are driving shoes just like the ones Formula 1 drivers wear. While comfortable, I wouldn't advise you walk around a mall or any really long distance. Great for driving as you connect better to the 3 pedals (manual transmission, of course). Fit well</p>
+            <p>{desc}</p>
 
 <div className="Add_tocart">
     <p>select size to add to cart</p>

@@ -18,7 +18,7 @@
     border-radius: 10px;
     box-shadow:var(--boxShadow) ;
     background-color: var(--lightGrey);
-    
+    cursor: pointer;
 }
 .shoeImage{
     width: 100%;
@@ -68,9 +68,15 @@
 /* !INSPECTION PAGE FOR THE SELECTED ITEM */
 .small_images{
     display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+   width: 100%;
+
 }
 .small_images img{
-    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
     
 }
 .wideViewImage{
@@ -181,6 +187,7 @@
 @media (max-width:640px) {
     .wideViewImage {
         height: 300px;
+        
     }
    .wideViewImage img{
     object-fit: contain;
@@ -192,6 +199,10 @@
    .secondCash{
     font-size: 15px;
    }
+   .inspectContainer{
+    padding: 10px;
+   }
+   
     
 }
 
