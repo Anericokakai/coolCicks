@@ -10,24 +10,23 @@ import Preloader from "./Preloaders/Preloader";
 import { setTrendingData } from "../slices/FetchTrendingsSlice";
 
 function ReusableTrends({ singlecategory }) {
- 
   const [paginateArray, setPaginateArray] = useState([]);
   const [loadingTrends, setloadingtrends] = useState(false);
 
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
     async function fetcDatas() {
       try {
         setloadingtrends(true);
         await axios
           .get(
-            `http://localhost:7001/api/coolciks/v1/fetchByTrend?category=${singlecategory.category_Name}`
+            `https://coolcicks.onrender.com/api/coolciks/v1/fetchByTrend?category=${singlecategory.category_Name}`
           )
           .then((res) => {
             const result1 = res.data.data;
             dispatch(setTrendingData(res.data.data));
-   
+
             setPaginateArray(result1);
 
             setloadingtrends(false);
@@ -44,13 +43,6 @@ function ReusableTrends({ singlecategory }) {
   // !PRELOADER IMPLIMENTATION
   const preloaderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-
- 
-
-;
-
-  
-
   return (
     <div className="reusable_trends_container">
       <h1 className="headings">Featured in {singlecategory?.category_Name} </h1>
@@ -66,7 +58,6 @@ function ReusableTrends({ singlecategory }) {
             );
           })}
       </div>
-      
     </div>
   );
 }

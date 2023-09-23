@@ -16,8 +16,8 @@ function InspectPage() {
   const [currentSelectedImg, setCurrentSelectedImg] = useState();
   const [selectedPrice, setSelectedPrice] = useState();
   const [SelectedColor, setSelectedColor] = useState();
-  const[showPopUp,setShowPopUp]=useState(false)
-  const[cartMessage,setCartMessage]=useState("")
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [cartMessage, setCartMessage] = useState("");
   //! handle click events to set images
 
   // /inspect?image=${info?.images}&desc=${info?.shoe_Description}&name=${info?.shoe_name}&tags=${info?.tags}&color=${info?.color}&instock=${info?.inStock}&price=${info?.price}&purchase=${info?.purchases}
@@ -33,7 +33,6 @@ function InspectPage() {
   const id = infoParams.get("id");
   const catId = infoParams.get("catId");
   let tags_string = "";
-  
 
   for (let x in tags) {
     tags_string += tags[x];
@@ -86,7 +85,7 @@ function InspectPage() {
 
     e.target.className = "price";
     const result = await axios.get(
-      `http://localhost:7001/api/coolcicks/v1/filter_deep?id=${catId}`
+      `https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}`
     );
   };
 
@@ -97,11 +96,10 @@ function InspectPage() {
       image: image_array[0],
       _id: id,
     };
-setCartMessage("item added to cart")
-    setShowPopUp(true)
+    setCartMessage("item added to cart");
+    setShowPopUp(true);
     setTimeout(() => {
-      setShowPopUp(false)
-
+      setShowPopUp(false);
     }, 2000);
     dispatch(AddItem(data));
     dispatch(calculateTotals());
@@ -119,28 +117,25 @@ setCartMessage("item added to cart")
   console.log(addCart);
 
   const removeItemFromCart = () => {
-    setCartMessage("item removed from cart")
-    setShowPopUp(true)
+    setCartMessage("item removed from cart");
+    setShowPopUp(true);
 
     setTimeout(() => {
-      setShowPopUp(false)
-      
+      setShowPopUp(false);
     }, 2000);
     dispatch(removeItem({ _id: id }));
     dispatch(calculateTotals());
     setAddCart(true);
   };
 
-  const goBack=()=>window.history.back()
+  const goBack = () => window.history.back();
   return (
     <div className="InspectPage">
       <Navigation />
-      <div className="back" onClick={ goBack}>
+      <div className="back" onClick={goBack}>
         <i className="fa-solid fa-left-long" id="back"></i>
       </div>
-      {
-        showPopUp &&<PopUp message={cartMessage}></PopUp>
-      }
+      {showPopUp && <PopUp message={cartMessage}></PopUp>}
 
       <div className="inspectContainer">
         <div className="inspectImage">

@@ -16,7 +16,7 @@ import Preloader from "./Preloaders/Preloader";
 function EachCategory() {
   const [selectedPrice, setSelectedPrice] = useState();
   const [SelectedColor, setSelectedColor] = useState();
-const [data_confirm,setDatacornfirm]=useState(false)
+  const [data_confirm, setDatacornfirm] = useState(false);
   const currentUrl = window.location.href;
 
   const paramsContainer = new URLSearchParams(window.location.search);
@@ -33,8 +33,6 @@ const [data_confirm,setDatacornfirm]=useState(false)
   const { data2, loading2, selectedColorFilter, selectedPriceFilter } =
     useSelector((state) => state.filteredApi);
   const data_card = data2?.data;
-  
-  
 
   // !redirect to previous page
   const redirectBack = () => window.history.back();
@@ -53,25 +51,26 @@ const [data_confirm,setDatacornfirm]=useState(false)
 
     e.target.style.border = "3px solid green";
     e.target.className = "selected_color";
-setloading3(true)
-     await axios.get(
-      `http://localhost:7001/api/coolcicks/v1/filter_deep?id=${catId}&price=${selectedPriceFilter}&color=${color_Filter}`
-    ).then(result=>{
-      dispatch(setNewData(result.data));
-      console.log(result.data.data.length==0)
-      setloading3(false)
-      if(result.data.data.length==0){
-        setDatacornfirm(true)
-      }else{
-        setDatacornfirm(false)
-  
-      }
-    })
+    setloading3(true);
+    await axios
+      .get(
+        `https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&price=${selectedPriceFilter}&color=${color_Filter}`
+      )
+      .then((result) => {
+        dispatch(setNewData(result.data));
+        console.log(result.data.data.length == 0);
+        setloading3(false);
+        if (result.data.data.length == 0) {
+          setDatacornfirm(true);
+        } else {
+          setDatacornfirm(false);
+        }
+      });
   };
 
   const handlePrice = async (e, price) => {
     e.target.id = `${price}`;
- setDatacornfirm(false)
+    setDatacornfirm(false);
     setSelectedPrice(e.target);
     await dispatch(setselectedPriceFilter(price));
     console.log(e.target);
@@ -80,25 +79,23 @@ setloading3(true)
       selectedPrice.className = "";
     }
     e.target.style.border = "3px solid green";
-  e.target.style.color='white'
-  e.target.style.boxShadow='0px 20px 25px -5px rgba(0,0,0,0.1) , 0px 10px 10px -5px rgba(0,0,0,0.04)'
+    e.target.style.color = "white";
+    e.target.style.boxShadow =
+      "0px 20px 25px -5px rgba(0,0,0,0.1) , 0px 10px 10px -5px rgba(0,0,0,0.04)";
     e.target.className = `price`;
     setloading3(true);
     await axios
       .get(
-        `http://localhost:7001/api/coolcicks/v1/filter_deep?id=${catId}&price=${price}`
+        `https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&price=${price}`
       )
       .then((result) => {
         dispatch(setNewData(result.data));
         setloading3(false);
       });
   };
-  
-  
+
   // preloader
-  let prelodArray = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-  ];
+  let prelodArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <div>
       <Navigation />
@@ -126,13 +123,13 @@ setloading3(true)
       </div>
       <div className="cardsHolder">
         {loading2 &&
-            prelodArray.map((singleLoader) => {
-              return <Preloader key={singleLoader}></Preloader>;
-            })}
-            {loading3 &&
-            prelodArray.map((singleLoader) => {
-              return <Preloader key={singleLoader}></Preloader>;
-            })}
+          prelodArray.map((singleLoader) => {
+            return <Preloader key={singleLoader}></Preloader>;
+          })}
+        {loading3 &&
+          prelodArray.map((singleLoader) => {
+            return <Preloader key={singleLoader}></Preloader>;
+          })}
         {!loading2 &&
           data_card != [] &&
           data_card?.map((singleData) => {
