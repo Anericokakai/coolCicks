@@ -28,6 +28,11 @@ export const fetchApiCategories=createAsyncThunk('myApi/fetchcategories',async()
 
     })
 
+export const fetchData_underFeatures=createAsyncThunk("/api/featured",async()=>{
+    const res=await axios.get('http://localhost:7001/api/coolcicks/v1/featured')
+    return res.data
+})
+
 
     // !new thunk for the trendoing
 

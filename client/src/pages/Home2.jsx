@@ -5,13 +5,20 @@ import ReusableCard from "../components/ReusableCard";
 import "./card.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddItem, calculateTotals } from "../slices/fetchApiSlice";
-import LandingPAge from "../components2/LandingPAge";
+
 import Trending from "../components2/componentsCss/Trending";
 import ReusableTrends from "../components/ReusableTrends";
 import { fetchDataUnderCategory ,fetch_data_underFilters} from "../Thunks/Thunks";
+import Preloader from "../components/Preloaders/Preloader";
+import ReactPaginate from "react-paginate";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import './paginate.css'
+import { useState } from "react";
+
 function Home2() {
   
-
+const[limitedArray,setlimitedArray]=useState([])
   // !add items to cart function
 const dispatch=useDispatch()
 
@@ -31,22 +38,38 @@ dispatch(calculateTotals())
   
   const categories=data?.data
   let categoryArray=[]
-  categories.forEach(single_one=>{
+  categories?.forEach(single_one=>{
     categoryArray.push(single_one?.category_Name)
 
   })
+  let prelodArray=[1,2,3,4,5,6,7,8,9,10,11,12]
 
 
 
+const limit=12
   useEffect(()=>{
     let randomIndex=Math.floor(Math.random()*categoryArray.length)
-    console.log(randomIndex)
+    
 const category=categoryArray[randomIndex]
   
 
      dispatch(fetchDataUnderCategory(category));
+
+     setlimitedArray(data2?.data?.slice(0,limit))
   },[])
 
+  
+
+
+  function handlePageChange(e) {
+    const startIndex=e.selected*limit
+    console.log(startIndex)
+    const endIndex=startIndex+limit
+  setlimitedArray(  data2?.data?.slice(startIndex,endIndex))
+    console.log(limitedArray)
+  }
+
+  const noOfPages=Math.ceil(data2?.data?.length/limit)
   return (
     <div>
       <Navigation />
@@ -54,15 +77,47 @@ const category=categoryArray[randomIndex]
       
     
       <Categories />
+
+
       <div className="cardsHolder">
+        
         {
-          data2 && data2?.data?.map(singleData=>{
+          loading && prelodArray.map(singleLoader=>{
+    return <Preloader key={singleLoader} ></Preloader>
+          }) 
+          
+        }
+        {
+           !loading &&limitedArray.map(singleData=>{
 
            return <ReusableCard singleData={singleData} key={singleData._id}></ReusableCard>
            })
         }
       </div>
-
+      
+      
+   <div className="paginate">
+   <ReactPaginate
+            activeClassName={"item active "}
+            breakClassName={"item break-me "}
+            breakLabel={"..."}
+            containerClassName={"pagination"}
+            disabledClassName={"disabled-page"}
+            marginPagesDisplayed={5}
+            nextClassName={"item next "}
+            nextLabel={
+              <ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />
+            }
+            onPageChange={handlePageChange}
+            pageCount={noOfPages}
+            pageClassName={"item pagination-page "}
+            pageRangeDisplayed={2}
+            previousClassName={"item previous"}
+            previousLabel={
+              <ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />
+            }
+          />
+   </div>
 
       <Trending></Trending>
 
@@ -75,6 +130,8 @@ const category=categoryArray[randomIndex]
 
         })
       }
+
+      
     </div>
   );
 }

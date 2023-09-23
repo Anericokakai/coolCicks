@@ -1,16 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../assets/images/kicks/logo2.png";
+import logo from "../assets/images/logo2.png";
 import { SearchItem } from "../Helper/SearchHelper";
 import { calculateTotals, clearCart } from "../slices/fetchApiSlice";
 import Cart from "./componentsCss/Cart";
 import "./componentsCss/Nav.css";
 import loadImage from "../assets/images/load.gif";
 function Navigation() {
-
   // ! fetch suggestion on click event
-  
+
   //  !select the navigation
   const nav = document.querySelector(".Navigations");
   const [showCart, setShowCart] = useState(false);
@@ -51,6 +50,7 @@ function Navigation() {
   const { data, error, loading, cartItems, amount } = useSelector(
     (state) => state.categoryApi
   );
+  
 
   let categories = data.data;
   const clear = () => {
@@ -78,8 +78,6 @@ function Navigation() {
 
   // ! search filteer directly from the database
 
-
-
   const handleSearchChange = (e) => {
     let inputVal = e.target.value;
 
@@ -103,23 +101,20 @@ function Navigation() {
     // setShowSearchResults(false);
   };
 
-  const HandleClickSearch = (query ) => {
+  const HandleClickSearch = (query) => {
     setShowSearchResults(false);
-    SearchItem(query,setLoadingItems).then(data=>{
-      const data_search=data.results[0]
-      console.log(data_search)
-       window.location.href=`/inspect?image=${data_search?.images}&desc=${data_search?.shoe_Description}&name=${data_search?.shoe_name}&tags=${data_search?.tags}&color=${data_search?.color}&instock=${data_search?.inStock}&price=${data_search?.price}&purchase=${data_search?.purchases}`
-
-    })
-   
+    SearchItem(query, setLoadingItems).then((data) => {
+      const data_search = data.results[0];
+      
+      window.location.href = `/inspect?image=${data_search?.images}&desc=${data_search?.shoe_Description}&name=${data_search?.shoe_name}&tags=${data_search?.tags}&color=${data_search?.color}&instock=${data_search?.inStock}&price=${data_search?.price}&purchase=${data_search?.purchases}`;
+    });
   };
-  
 
   return (
     <div>
       <nav className="nav">
         <div className="logoImage">
-          <img src={logo} alt="" onClick={()=>window.location.href='/'} />
+          <img src={logo} alt="" onClick={() => (window.location.href = "/")} />
         </div>
         <div></div>
         <ul className="uls">
@@ -219,7 +214,11 @@ function Navigation() {
                   searchItems?.map((single_item) => {
                     return (
                       <div key={single_item._id}>
-                        <p onClick={()=>HandleClickSearch(single_item.shoe_name)}>
+                        <p
+                          onClick={() =>
+                            HandleClickSearch(single_item.shoe_name)
+                          }
+                        >
                           {single_item?.shoe_name}
                         </p>
                       </div>

@@ -1,8 +1,6 @@
 import React from "react";
 import "./Nav.css";
-import test from "../../assets/images/kicks/nike1/3.png";
-import img2 from "../../assets/images/kicks/image4.jpg";
-import img3 from "../../assets/images/kicks/i1.jpg";
+
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotals, decreaseItem, increaseItems } from "../../slices/fetchApiSlice";
 function Cart() {
@@ -31,7 +29,7 @@ function Cart() {
           return <div className="selectedItem" key={single._id}>
           <div className="itemImage">
             <div className="cartImage">
-              <img src={single.images[0]} alt="" />
+              <img src={single.image} alt="" />
             </div>
             <div className="desc">
               <p>{ single.shoe_name}</p>

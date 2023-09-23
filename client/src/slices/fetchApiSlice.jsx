@@ -82,6 +82,7 @@ export const {
   increaseItems,
   decreaseItem,
   calculateTotals,
+  removeItem,
   setParams,
   AddItem,
 } = fetchcategories.actions;

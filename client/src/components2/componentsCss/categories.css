@@ -1,6 +1,10 @@
 :root{
     --blue:#0fa3b1;
-    --white:#ffffff;
+    --boxShadow:0px 20px 25px -5px rgba(0,0,0,0.1) , 0px 10px 10px -5px rgba(0,0,0,0.04) ;
+    --lightGrey:#edf2f4;
+    --pureWhite:#ffffff;
+    --darkGrey:#403d39;
+    --Yellow:#ff9f1c;
 }
 
 .singleCategory{
@@ -128,7 +132,9 @@ width: max-content;
     height: 200px;
     width: 300px;
     position: relative;
-    margin-right: 20px; /* Add space between scrolling divs */
+    margin-right: 20px;
+    cursor: pointer;
+     /* Add space between scrolling divs */
   }
   .scrolling-content img {
     width: 100%;
@@ -145,3 +151,105 @@ width: max-content;
         transform: translateX(-700%); /* Adjust the percentage based on the number of content blocks */
     }
   }
+  .colorsCont{
+    padding-left: 1em;
+    width: 100%;
+    
+  }
+  .colorsCont  button{
+    width: 60px;
+    height: 40px;
+    margin-left: 1em;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0px 8px 17px 2px rgba(0,0,0,0.14) , 0px 3px 14px 2px rgba(0,0,0,0.12) , 0px 5px 5px -3px rgba(0,0,0,0.2) ;
+    cursor: pointer;
+  }
+  .selected_color{
+    position: relative;
+  }
+  .selected_color::after{
+    content: "\2713";
+    font-size: 16px;
+    ;
+  }
+
+  .colorbtn{
+    width: 60px;
+    height: 40px;
+    margin-left: 1em;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0px 8px 17px 2px rgba(0,0,0,0.14) , 0px 3px 14px 2px rgba(0,0,0,0.12) , 0px 5px 5px -3px rgba(0,0,0,0.2) ;
+    cursor: pointer;
+
+
+  }
+  
+  .filter_heading{
+    padding-left: 1em;
+    letter-spacing: 1px;
+  }
+
+  .priceFilter button{
+    padding: 7px;
+    border-radius: 8px;
+    border: none;
+    box-shadow:var(--darkShadow) ;
+    background-color: var(--blue);
+color: var(--white);
+cursor: pointer;
+  }
+ 
+  .filter_heading{
+    padding-bottom: 1em;
+    font-size: 19px;
+  }
+
+  .itemNotFound{
+    display: grid;
+    place-content: center;
+    height: 250px;
+    width: 100%;
+    
+  }
+  .itemNotFound h1{
+    text-align: center;
+  }
+  .itemNotFound img{
+    width: 100%;
+  }
+  @media (max-width:640px) {
+   
+    .colorsCont{
+        width: 100%;
+        
+        
+        display: flex;
+        flex-wrap: wrap;
+        place-content: center;
+        padding: 1em;
+        gap: .3em;
+
+    
+    }
+    .colorsCont button{
+        width: 30px;
+        height: 30px;
+    }
+    
+  }
+
+  
+
+  /* !fake category */
+  .fakeCategory{
+    border: none;
+    background-color: var(--lightGrey);
+    width: 60px;
+    padding: 3px 5em;
+    box-shadow: var(--boxShadow);
+    height: 40px;
+  }
+
+  

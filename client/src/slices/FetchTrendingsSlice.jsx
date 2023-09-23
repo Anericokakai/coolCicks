@@ -10,7 +10,12 @@ const initialState = {
 const fetchTrendingDataSlice = createSlice({
   name: "trendingApi",
   initialState,
-  reducers:{},
+  reducers:{
+    setTrendingData:(state,action)=>{
+      state.trendingData=action.payload
+
+    }
+  },
   extraReducers:(builder)=>{
     builder.addCase(fetch_data_under_trending.pending,(state)=>{
         state.loadingTrends=true
@@ -26,5 +31,5 @@ const fetchTrendingDataSlice = createSlice({
 
   }
 });
-
+export const { setTrendingData}=fetchTrendingDataSlice.actions
 export default fetchTrendingDataSlice.reducer

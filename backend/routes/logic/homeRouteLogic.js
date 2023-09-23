@@ -1,4 +1,5 @@
 import { categoryCollection, testCollection } from "../../database/schemas/categorySchema.js"
+import { shoeCollection } from "../../database/schemas/ShoeSchema.js";
 
 
 
@@ -23,10 +24,10 @@ export const handle_HomeRoute_getRequset=async(req,res)=>{
     const category =req.query.category||randomCategory[randomCategoryNumber]
 // ! GET DATA
    try {
-    
+    const colors = await shoeCollection.distinct("color");
     const data=await categoryCollection.find()
     res.status(200).json({
-        data
+        data,colors
     })
    } catch (error) {
     res.status(500).json({message:'internal server error',error:error})
