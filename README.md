@@ -55,7 +55,7 @@ fetchData_Under_categories()
 >the above functions are used to fetch all the categories of shoes available in cool Kicks without the actual shoes then we can use the categories to filter all the shoes under the same categories .The first one uses axios while the second one uses internal fetch function in java script
 
 ### response example from fetching data under categories
-```json
+```javascript
 {data: Array(4), colors: Array(11)}
 ```
 >data is the category while colors are all the shoe colors available in the shoe collection . We can use the colors to filter our shoe collection as we shall see later in the documentation 
@@ -108,7 +108,7 @@ fetch_Shoes_under_Category("teens")
 ```
 
 ## example of the json response using fetch
-```json
+```javascript
 {data: Array(10), filterc: 'green'}
 ```
 ---
@@ -160,7 +160,7 @@ fetchTrends("teens").then(result=>{
 ```
 
 ## example of the json  response
-```json
+```javascript
 {data: Array(10)}
 ```
 
