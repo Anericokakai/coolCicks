@@ -164,3 +164,66 @@ fetchTrends("teens").then(result=>{
 {data: Array(10)}
 ```
 
+
+# 4. FIlters api 
+
+>The following api is use to filter all the data in the shoe collection base on either the price , color or company name
+
+* parameters  to pass in the query
+>we can pass several parameters to the apis to find data based on our  parameters
+## filter by price parameter
+>to filter by the highest or lowest price we use pass  -1 to filter by the highest price and 1 to filter by the lowest price
+
+> from the categories api we are able to find the category_id from the response we use the category_id as the first parameter  which is accessible from the category api results  then the price parameter is either 1 or -1 
+
+
+***Example of a filter by color api***
+
+```javascript
+// the api takes in two arguments, the category id and the price filter 
+const filterByHighestPrice=async(catId,price)=>{
+    const results= await axios.get(`https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&price=${price}`)
+    return results.data
+
+}
+
+// CALL THE FUNCTION PASSING THE ID AND THE PRICE FILTER
+filterByHighestPrice("650dcb5f99b694d1bddce33f",-1).then(response=>{
+    console.log(response)
+})
+```
+
+>the above api filters the shoes based on the category and price
+
+# filter by color api
+>to filter by color ,we need one of the colors from the category api also then we can pass the the category id ,color in the api parameters
+
+***Example of a filter by color Api***
+```Javascript
+
+const filterByColor=async(catId,color_filter)=>{
+    const result= await axios.get(`https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&color=${color_Filter}`)
+return results.data
+}
+
+// CALL THE FUNCTION
+
+filterByColor("650dcb5f99b694d1bddce33f","red").then(response=>{
+    console.log(response);
+})
+```
+
+# filter by both price and color
+>to filter by both price and color we can pass the filters as the parameters in our api 
+
+
+***Example of a filter by color and price in javascript***
+```javascript
+const filter_By_color_Price=async(catId,selectedPriceFilter,color_Filter)=>{
+    const response= await axios.get(`https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&price=${selectedPriceFilter}&color=${color_Filter}`)
+}
+
+filter_By_color_Price("650dcb5f99b694d1bddce33f",-1,"red')
+```
+
+# collaborating to  the project
