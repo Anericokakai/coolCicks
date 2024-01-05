@@ -88,7 +88,7 @@ const category=categoryArray[randomIndex]
           
         }
         {
-           !loading &&limitedArray.map(singleData=>{
+           !loading &&limitedArray?.map(singleData=>{
 
            return <ReusableCard singleData={singleData} key={singleData._id}></ReusableCard>
            })
