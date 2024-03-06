@@ -7,6 +7,7 @@ import App from './App.jsx'
 import{store}from "./store/store"
 import {Provider} from "react-redux"
 const persistor =persistStore(store)
+import "./index.css"
 ReactDOM.createRoot(document.getElementById('root')).render(
   
     <BrowserRouter>

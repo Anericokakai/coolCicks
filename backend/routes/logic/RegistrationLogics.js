@@ -6,7 +6,7 @@ import bcryptjs from 'bcryptjs'
 
 // ! REGISTER ROUTE LOGIC FUNCTION FPR A NEW USER
 export const HandleUserRegistration=async(req,res)=>{
-    const {name,email,phone,adress,password}=req.body
+    const {name,email,phone}=req.body
 
 const hashedPass= req.hashedPass
     try {
@@ -18,7 +18,7 @@ const hashedPass= req.hashedPass
             userName:name,
             user_Phone:phone,
             userEmail:email,
-            user_adress:adress,
+           
             password:hashedPass
         })
 res.status(200).json({message:'user created successfully',user:newUser})
@@ -39,6 +39,7 @@ export const handleUserLogin=async(req,res)=>{
     const refresh_key=process.env.REFRESH_HASH
     const{email,password}= req.body
     // !find the user with that email
+    console.log(email,password)
   
     try {
         
