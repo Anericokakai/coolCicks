@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./table.css";
 import axios from "axios";
-import { baseurl } from "../Helper/SubmitPost";
+import { toast, ToastContainer } from "react-toastify";
+import { baseurl, fetchDataAdminCategory } from "../Helper/SubmitPost";
 
-function Tablecomponent({ blogs, topic }) {
+function Tablecomponent({ blogs, setItems, cat ,deleted}) {
   const [loadDelete, setLoadDelete] = useState(false);
-  const [id, setid] = useState("");
 
   function ArrayBuffer(buffer) {
     var binary = "";
@@ -15,21 +15,39 @@ function Tablecomponent({ blogs, topic }) {
 
     return window.btoa(binary);
   }
-const deleteItem=async(id)=>{
-  console.log(id)
-  setLoadDelete(true)
-  await axios.post(`${baseurl}/api/coolckicks/v1/deleteItem`,{id:id}).then(res=>{
-    console.log(res)
-  }).catch(err=>{
-    console.log(err)
-  })
-}
-  console.log(blogs);
+  const deleteItem = async (id) => {
+    console.log(id);
+    setLoadDelete(true);
+    await axios
+      .post(`${baseurl}/api/coolckicks/v1/deleteItem`, { id: id })
+      .then((res) => {
+        console.log(res);
+        setLoadDelete(false);
+        toast.success(res.data.message);
+        fetchDataAdminCategory(cat).then((res) => {
+          setItems(res.data);
+          
+        });
+      })
+      .catch((err) => {
+        setLoadDelete(false);
+        console.log(err);
+        toast.error("an error occured please try again");
+      });
+  };
+
   // !function to delete blog
 
   return (
     <div className="table-container">
-      
+      <ToastContainer
+        position={"top-center"}
+        closeOnClick={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        autoClose={3000}
+      />
       <table class="styled-table">
         <thead>
           <tr>
@@ -44,7 +62,7 @@ const deleteItem=async(id)=>{
         <tbody>
           {blogs &&
             blogs !== "]" &&
-            blogs?.map((single) => {
+            blogs?.map((single,i) => {
               var base64flag = single?.Image?.contentType;
 
               const concatFunction = (str, n) => {
@@ -54,20 +72,25 @@ const deleteItem=async(id)=>{
               };
 
               return (
-                <tr>
-                  <td>{concatFunction(single?.shoe_name,30)}</td>
+                <tr key={i}>
+                  <td>{concatFunction(single?.shoe_name, 30)}</td>
                   <td>{concatFunction(single?.shoe_Description, 100)}</td>
                   <td>
-                    <p  >{single?.price}</p>
+                    <p>{single?.price}</p>
                   </td>
                   <td>
-                    <img src={single?.images[0]} alt="" width={60} height={60} />
+                    <img
+                      src={single?.images[0]}
+                      alt=""
+                      width={60}
+                      height={60}
+                    />
                   </td>
                   <td>
                     <button
-                    disabled={loadDelete}
+                      disabled={loadDelete}
                       className="Hide_border"
-                      onClick={() =>deleteItem(single?._id)}
+                      onClick={() => deleteItem(single?._id)}
                     >
                       <i class="fa-solid fa-trash text-red-600"></i>
                     </button>

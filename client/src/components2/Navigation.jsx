@@ -7,6 +7,7 @@ import { calculateTotals, clearCart } from "../slices/fetchApiSlice";
 import Cart from "./componentsCss/Cart";
 import "./componentsCss/Nav.css";
 import loadImage from "../assets/images/load.gif";
+import { Link } from "react-router-dom";
 function Navigation() {
   // ! fetch suggestion on click event
 
@@ -165,6 +166,7 @@ function Navigation() {
             </div>
           </div>
           <div className="carts">
+            <Link className="underline text-purple-500 cursor-pointer" to={'/admin'}>  admin</Link>
             <li className="cartIcon" onClick={displayCart}>
               <i className="fa-solid fa-cart-shopping"></i>
               <span className="count">

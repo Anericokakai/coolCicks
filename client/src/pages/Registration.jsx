@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import styles from "../styles";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 function Registration() {
+  const [loading, setloading] = useState(false)
   const submitToDb = async (data) => {
     const result = await axios.post(
       "https://coolcicks.onrender.com/api/coolcicks/v1/add_user",
@@ -11,6 +13,7 @@ function Registration() {
     );
     return result;
   };
+  const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = document.querySelector(".LoginCard");
@@ -26,16 +29,37 @@ function Registration() {
       password: password,
       phone: phone,
     };
+   
+    setloading(true)
     await submitToDb(data)
       .then((res) => {
         console.log(res);
+        setloading(false)
+        toast.success(results.data?.message)
+
+
+        setTimeout(() => {
+         return  navigate('/login')
+
+        }, 900);
       })
       .catch((error) => {
         console.log(error);
+        setloading(false)
+        toast.error("an error occurred while creating an account");
       });
   };
+  // mofanuwox@mailinator.com
   return (
     <div className={`${styles.flexCenter} min-h-dvh bg-gray-100`}>
+      <ToastContainer
+        position={"top-center"}
+        closeOnClick={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        autoClose={3000}
+      />
       <form
         onSubmit={handleSubmit}
         className=" LoginCard border px-20 py-20 rounded-2xl shadow-xl "
@@ -72,7 +96,8 @@ function Registration() {
           <input type="password" name="con_password" id="" />
         </div>
         <div className="input py-7">
-          <button
+          <button 
+          disabled={loading}
             className="bg-gradient-to-r from-cyan-500 to-blue-500 px-10 py-3 rounded-full text-white hover:bg-gradient-to-l min-w-40"
             id=""
           >

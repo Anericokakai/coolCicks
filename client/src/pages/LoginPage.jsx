@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../styles";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import axios from "axios";
-
+import {ToastContainer,toast} from"react-toastify"
 function LoginPage() {
   const handleLogin = async (data) => {
     const results = await axios.post(
@@ -11,6 +11,7 @@ function LoginPage() {
     );
     return results;
   };
+  const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = document.querySelector(".loginForm");
@@ -25,13 +26,27 @@ function LoginPage() {
     await handleLogin(data)
       .then((results) => {
         console.log(results);
+        toast.success("user log in success");
+sessionStorage.setItem("token",results.data?.token)
+        setTimeout(() => {
+          navigate("/admin")
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
+        toast.error(error?.response?.data?.message)
       });
   };
   return (
     <div className={` ${styles.flexCenter}   min-h-dvh bg-gray-100`}>
+      <ToastContainer
+        position={"top-center"}
+        closeOnClick={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        autoClose={3000}
+      />
       <div>
         <form
           onSubmit={handleSubmit}
@@ -71,9 +86,9 @@ function LoginPage() {
           </div>
           <div>
             <p>
-              Have an account ?{" "}
+             Don't Have an account ?{" "}
               <Link to={"/register"} className=" text-blue-600">
-                Login
+                Register
               </Link>
             </p>
           </div>

@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Tablecomponent from "../components/Tablecomponent";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "../components/table.css";
 import { fetchApiCategories } from "../Thunks/Thunks";
 import FakeCategory from "../components/Preloaders/FakeCategory";
 import { fetchDataAdminCategory } from "../Helper/SubmitPost";
 function Admin() {
+
+  const token=sessionStorage.getItem("token")
+ const navigate=useNavigate()
   const dispatch = useDispatch();
   useEffect(() => {
+    
+    if(!token){
+navigate('/login')
+    }
     dispatch(fetchApiCategories());
   }, []);
   const fakeArray = [1, 2, 3, 4, 5];
   const [cat, setCat] = useState("teens");
 const [items, setItems] = useState(null)
+const [deleted, setdeleted] = useState(true)
   const { data, error, loading, cartItems, amount, total, parameter } =
     useSelector((state) => state.categoryApi);
   const blogs = [1, 2, 3, 4, 5, 6, 7, 8, 910];
@@ -27,13 +35,14 @@ const [items, setItems] = useState(null)
     }
     fetchDataAdminCategory(cat)
       .then((res) => {
-        console.log(res);
+        
         setItems(res.data)
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [categories]);
+  }, [cat,deleted]);
+
   return (
     <div>
       <header className="defaultHeader">
@@ -57,9 +66,9 @@ const [items, setItems] = useState(null)
             categories.map((single) => {
               return (
                 <button
-                  className="singleCategory"
+                  className={`singleCategory ${single?.category_Name===cat && "bg-blue-500 text-white border-none"}`}
                   onClick={() => {
-                    handleRedirects(single.category_Name, single?._id);
+                    setCat(single.category_Name);
                   }}
                   key={single._id}
                 >
@@ -75,7 +84,7 @@ const [items, setItems] = useState(null)
             })}
         </div>
       </div>
-      <Tablecomponent blogs={items} />
+      <Tablecomponent blogs={items} setItems={setItems} cat={cat} deleted={deleted} />
     </div>
   );
 }
