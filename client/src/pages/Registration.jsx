@@ -2,11 +2,11 @@ import React from "react";
 import "./Login.css";
 import axios from "axios";
 import styles from "../styles";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 function Registration() {
   const submitToDb = async (data) => {
     const result = await axios.post(
-      "http://localhost:7001/api/coolcicks/v1/add_user",
+      "https://coolcicks.onrender.com/api/coolcicks/v1/add_user",
       data
     );
     return result;
@@ -36,7 +36,10 @@ function Registration() {
   };
   return (
     <div className={`${styles.flexCenter} min-h-dvh bg-gray-100`}>
-      <form onSubmit={handleSubmit} className=" LoginCard border px-20 py-20 rounded-2xl shadow-xl ">
+      <form
+        onSubmit={handleSubmit}
+        className=" LoginCard border px-20 py-20 rounded-2xl shadow-xl "
+      >
         <h1 className=" text-3xl font-bold py-3">Registration page</h1>
         <div className="input">
           <div>
@@ -77,7 +80,13 @@ function Registration() {
           </button>
         </div>
         <div>
-          <p>Have an account ? <Link to={'/login'} className=" text-blue-600">  Login</Link></p>
+          <p>
+            Have an account ?{" "}
+            <Link to={"/login"} className=" text-blue-600">
+              {" "}
+              Login
+            </Link>
+          </p>
         </div>
       </form>
     </div>

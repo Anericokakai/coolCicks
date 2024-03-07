@@ -6,10 +6,10 @@ import axios from "axios";
 function LoginPage() {
   const handleLogin = async (data) => {
     const results = await axios.post(
-      "http://localhost:7001/api/coolcicks/v1/user_login",
+      "https://coolcicks.onrender.com/api/coolcicks/v1/user_login",
       data
     );
-    return results
+    return results;
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ function LoginPage() {
     const formValues = new FormData(form);
     const email = formValues.get("email");
     const password = formValues.get("password");
-    console.log(email,password)
+    console.log(email, password);
     let data = {
       email: email,
       password: password,

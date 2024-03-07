@@ -1,5 +1,6 @@
 import EachCategory from "../components/EachCategory";
 import InspectPage from "../components/InspectPage";
+import CreatePost from "../pages/CreatePost";
 
 import Home2 from "../pages/Home2";
 import LoginPage from "../pages/LoginPage";
@@ -29,6 +30,10 @@ export const navigationroutes =[
     {
         path:"/register",
         element:<Registration/>
+    },
+    {
+        path:"/post",
+        element:<CreatePost/>
     },
     {
         path:'/inspect',

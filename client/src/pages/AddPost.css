@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,200;1,6..12,300;1,6..12,400&family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,100;1,400&display=swap");
+
+.PostForm {
+  background-color: var(--white);
+  min-width: 280px;
+  min-height: 400px;
+  
+  max-width: 800px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  place-self: center;
+  border-radius: 10px;
+  border: 2px solid var(--profileGray);
+  padding: 1em;
+  position: relative;
+}
+.hidePostFormBtn {
+  box-shadow: var(--shadow);
+  right: 10px;
+  top: 5px;
+  background: none;
+}
+.upperPost {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 50px;
+  position: relative;
+}
+
+.userProfilePicInPostForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 20em;
+  border-radius: 10px;
+  padding: 0 7px;
+}
+.userProfilePicInPostForm:hover {
+  background-color: var(--profileGray);
+  cursor: pointer;
+}
+.userProfilePicInPostForm small {
+  padding: 0;
+  margin: 0;
+}
+#PostSubmit {
+  display: none;
+}
+.lowerPost {
+  margin-top: 1em;
+  height: 100%;
+}
+.lowerPost form {
+  max-height: 100%;
+}
+.postDesc {
+  width: 100%;
+  resize: none;
+  min-height: 10em;
+  border-radius: 1em;
+  padding:  10px;
+  border: 1px solid rgba(128, 128, 128, 0.397);
+  font-family: "Nunito Sans", sans-serif;
+  color: rgba(0, 0, 0, 0.915);
+  line-height: 1.5;
+  font-size: 18px;
+}
+.postDesc::-webkit-scrollbar {
+  background-color: var(--profileGray);
+  width: 5px;
+  border-radius: 100vw;
+}
+.postDesc::-webkit-scrollbar-thumb {
+  background-color: var(--light-blue);
+}
+.postDesc:focus {
+  outline: none;
+}
+#selectImage {
+  display: none;
+}
+.SubmitPostBtn {
+  position: absolute;
+  right: 3em;
+  bottom: 3em;
+  
+}
+.selectImgPlaceHolder {
+  background-color: var(--profileGray);
+  padding: 7px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+.selectImgPlaceHolder:hover {
+  box-shadow: var(--shadow);
+  border: 1px solid var(--textGray);
+}
+.SubmitPostBtn button {
+  background-color: var(--light-blue);
+}
+.cropper {
+  position: absolute;
+  height: 70vh;
+  width: 70%;
+  max-width: 800px;
+  text-align: center;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  justify-content: center;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+/* ! selected images */
+.selectedImagesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 1em;
+}
+.selectedImages {
+  width: 50px;
+  height: 70px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+}
+
+/* ! progress bars */
+.submitPostPreloader {
+  position: absolute;
+  top: 0;
+  width: 99%;
+  left: 0;
+}
+.MuiLinearProgress-bar {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .PostForm {
+    min-height: none;
+    height: 99vh;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+  }
+  .lowerPost form {
+    min-height: 70vh;
+  }
+
+  .hidePostFormBtn {
+    box-shadow: none;
+    font-size: 1.3em;
+  }
+  .cropper {
+    width: 100%;
+    height: 100%;
+  }
+}
