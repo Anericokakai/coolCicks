@@ -1,5 +1,6 @@
 import EachCategory from "../components/EachCategory";
 import InspectPage from "../components/InspectPage";
+import Admin from "../pages/Admin";
 import CreatePost from "../pages/CreatePost";
 
 import Home2 from "../pages/Home2";
@@ -38,6 +39,9 @@ export const navigationroutes =[
     {
         path:'/inspect',
         element:<InspectPage></InspectPage>
+    },{
+        path:'/admin',
+        element:<Admin/>
     }
     
 ]

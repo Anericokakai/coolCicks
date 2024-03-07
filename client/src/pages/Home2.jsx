@@ -52,7 +52,7 @@ const limit=12
     
 const category=categoryArray[randomIndex]
   
-
+console.log(categories)
      dispatch(fetchDataUnderCategory(category));
 
      setlimitedArray(data2?.data?.slice(0,limit))

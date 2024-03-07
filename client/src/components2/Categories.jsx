@@ -14,6 +14,7 @@ function Categories() {
 
   const btn = document.querySelector(".singleCategory");
   const categories = data.data;
+  
 
   useEffect(() => {
     dispatch(fetchApiCategories());

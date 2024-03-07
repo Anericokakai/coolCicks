@@ -2,7 +2,17 @@
 
 import { shoeCollection } from '../../../database/schemas/ShoeSchema.js'
 import { categoryCollection } from '../../../database/schemas/categorySchema.js'
+export const deleteItem=async(req,res)=>{
+    try {
+        const {id}=req.body
+        const results= await shoeCollection.findByIdAndDelete(id)
+        return res.status(200).json({message:"item was deleted successfully"})
+    } catch (error) {
+      return res.status(500).json({message:"internal server error"})  
+    }
 
+
+}
 
 // !FUNCTION TO CREATE A NEW SHOE AND ADD TO THE DATABASE
 export const Add_Shoe_Function=async(req,res)=>{

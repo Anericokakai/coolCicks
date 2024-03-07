@@ -22,6 +22,7 @@ function EachCategory() {
   const paramsContainer = new URLSearchParams(window.location.search);
   const [loading3, setloading3] = useState(false);
   const category = paramsContainer.get("category");
+  
   const catId = paramsContainer.get("catId");
   const dispatch = useDispatch();
   useEffect(() => {

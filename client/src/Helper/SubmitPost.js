@@ -44,3 +44,10 @@ export const likeUsersPost = async (postId, userId) => {
   );
   return result;
 };
+
+export const fetchDataAdminCategory = async(parameter) => {
+    const response = await axios.get(
+      `https://coolcicks.onrender.com/api/coolcicks/v1/categoryProduct?category=${parameter}`
+    );
+    return response.data;
+  }
