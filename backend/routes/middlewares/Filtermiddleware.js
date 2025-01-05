@@ -37,9 +37,8 @@ export const filters_middleware = async (req, res, next) => {
     const companyFilter = req.query.company || "nike";
 
     const colorFilter = req.query.color || randomColors[randomColorNumber];
-    const filterc=randomColors[randomColorNumber]
+    const filterc = randomColors[randomColorNumber];
 
-   
     const data = await shoeCollection.aggregate([
       {
         $lookup: {
@@ -51,8 +50,7 @@ export const filters_middleware = async (req, res, next) => {
       },
       {
         $match: {
-           "categoryData.category_Name": header ,
-      
+          "categoryData.category_Name": header,
         },
       },
       {
@@ -111,7 +109,6 @@ export const FilterbyTrending = async (req, res, next) => {
     const randomly_selectedTag = Math.floor(Math.random() * tagsFroDb.length);
 
     const filter = tagsFroDb[randomly_selectedTag];
-   
 
     const data = await shoeCollection.aggregate([
       {
@@ -140,33 +137,28 @@ export const FilterbyTrending = async (req, res, next) => {
     res.status(500).json({ message: "internal server error", error: error });
   }
 };
-export const filterTrendingMidddleWare=async(req,res,next)=>{
-
+export const filterTrendingMidddleWare = async (req, res, next) => {
   try {
-    
-    const category=req.query.category
+    const category = req.query.category;
 
-  const data=await shoeCollection.aggregate([
-    
-     { $lookup:{
-        from:"categories",
-        localField:"categoryId",
-        foreignField:"_id",
-        as:"trending",
-      }},
+    const data = await shoeCollection.aggregate([
       {
-        $match:{
-          "trending.category_Name":category,
-          tags:"trending"
-        }
-      }
-    
-  ])
-  return res.status(200).json({data})
+        $lookup: {
+          from: "categories",
+          localField: "categoryId",
+          foreignField: "_id",
+          as: "trending",
+        },
+      },
+      {
+        $match: {
+          "trending.category_Name": category,
+          tags: "trending",
+        },
+      },
+    ]);
+    return res.status(200).json({ data: data });
   } catch (error) {
-    
     res.status(500).json({ message: "internal server error", error: error });
-
   }
-
-}
+};

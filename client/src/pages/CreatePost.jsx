@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { UploadimageToCloudinary } from "../Helper/CloudinaryUPloads";
 import CircularProgressWithLabel from "../components/CircularProgressWihLabel";
-
+import {encode} from "blurhash"
 function CreatePost({ showPost }) {
   // multiple images upload to
   const [images, setImages] = useState([]);
@@ -16,11 +16,40 @@ function CreatePost({ showPost }) {
   const [percentage, setPercentage] = useState(0);
   const [postProgress, setPostProgress] = useState(0);
   const navigate = useNavigate();
+  const encodeImageToBlurhash = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      
+      reader.onload = (event) => {
+        const image = new Image();
+        image.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 32;
+          canvas.height = 32;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(image, 0, 0, 32, 32);
+          const imageData = ctx.getImageData(0, 0, 32, 32).data;
+          const blurhash = encode(imageData, 32, 32, 4, 4);
+          resolve(blurhash);
+        };
+        image.src = event.target.result;
+      };
+      
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      
+      reader.readAsDataURL(file);
+    });
+  };
 
   // ! change image
   const changeImageOnChange = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const imageArray = Array.from(e.target.files);
+      console.log(imageArray)
+      let blur= await encodeImageToBlurhash(imageArray[0])
+      console.log(blur)
 
       const imagesDataUrl = await Promise.all(
         imageArray.map((image) => {
@@ -36,7 +65,8 @@ function CreatePost({ showPost }) {
 
       setImages([...images, ...imagesDataUrl]);
     }
-  };
+  };console.log(images)
+  
 
   // ! form submission
   const handlePostSubmit = async (e) => {
@@ -202,12 +232,12 @@ function CreatePost({ showPost }) {
               </label>
 
               <div className="flex gap-3 flex-wrap">
-                <label class="inline-flex items-center">
+                <label className="inline-flex items-center">
                   <input
                     type="radio"
                     name="category"
                     value="trending"
-                    class="form-radio text-indigo-600"
+                    className="form-radio text-indigo-600"
                   />
                   <span class="ml-2 text-gray-700">trending</span>
                 </label>

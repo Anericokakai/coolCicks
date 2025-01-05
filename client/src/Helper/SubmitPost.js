@@ -1,7 +1,7 @@
 // ! function to submit users post
 
 import axios from "axios";
-export const baseurl = "https://coolcicks.onrender.com";
+export const baseurl = "http://localhost:7001";
 
 const AxiosForPost = axios.create({
   headers: {
@@ -11,7 +11,7 @@ const AxiosForPost = axios.create({
 
 export const submitPostByUser = async (formValues, setPostProgress) => {
   const result = await axios.post(
-    `https://coolcicks.onrender.com/api/coolcicks/v1/add_newShoe`,
+    `http://localhost:7001/api/coolcicks/v1/add_newShoe`,
     formValues,
     {
       headers: {
@@ -45,9 +45,9 @@ export const likeUsersPost = async (postId, userId) => {
   return result;
 };
 
-export const fetchDataAdminCategory = async(parameter) => {
-    const response = await axios.get(
-      `https://coolcicks.onrender.com/api/coolcicks/v1/categoryProduct?category=${parameter}`
-    );
-    return response.data;
-  }
+export const fetchDataAdminCategory = async (parameter) => {
+  const response = await axios.get(
+    `http://localhost:7001/api/coolcicks/v1/categoryProduct?category=${parameter}`
+  );
+  return response.data;
+};

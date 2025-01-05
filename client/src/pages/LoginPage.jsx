@@ -1,17 +1,22 @@
 import React from "react";
 import styles from "../styles";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {ToastContainer,toast} from"react-toastify"
+import { ToastContainer, toast } from "react-toastify";
 function LoginPage() {
   const handleLogin = async (data) => {
     const results = await axios.post(
-      "https://coolcicks.onrender.com/api/coolcicks/v1/user_login",
-      data
+      "http://localhost:7001/api/coolcicks/v1/user_login",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
     return results;
   };
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = document.querySelector(".loginForm");
@@ -27,14 +32,14 @@ function LoginPage() {
       .then((results) => {
         console.log(results);
         toast.success("user log in success");
-sessionStorage.setItem("token",results.data?.token)
+        sessionStorage.setItem("token", results.data?.token);
         setTimeout(() => {
-          navigate("/admin")
+          navigate("/admin");
         }, 1000);
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error?.response?.data?.message)
+        toast.error(error?.response?.data?.message);
       });
   };
   return (
@@ -86,7 +91,7 @@ sessionStorage.setItem("token",results.data?.token)
           </div>
           <div>
             <p>
-             Don't Have an account ?{" "}
+              Don't Have an account ?{" "}
               <Link to={"/register"} className=" text-blue-600">
                 Register
               </Link>

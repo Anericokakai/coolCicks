@@ -2,18 +2,23 @@ import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import styles from "../styles";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 function Registration() {
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
   const submitToDb = async (data) => {
     const result = await axios.post(
-      "https://coolcicks.onrender.com/api/coolcicks/v1/add_user",
-      data
+      "http://localhost:7001/api/coolcicks/v1/add_user",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
     return result;
   };
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = document.querySelector(".LoginCard");
@@ -29,24 +34,22 @@ function Registration() {
       password: password,
       phone: phone,
     };
-   
-    setloading(true)
+
+    setloading(true);
     await submitToDb(data)
       .then((res) => {
         console.log(res);
-        setloading(false)
-        toast.success(results.data?.message)
-
+        setloading(false);
+        toast.success(res.data?.message);
 
         setTimeout(() => {
-         return  navigate('/login')
-
+          return navigate("/login");
         }, 900);
       })
       .catch((error) => {
         console.log(error);
-        setloading(false)
-        toast.error("an error occurred while creating an account");
+        setloading(false);
+        toast.error(error?.response?.data?.message);
       });
   };
   // mofanuwox@mailinator.com
@@ -96,8 +99,8 @@ function Registration() {
           <input type="password" name="con_password" id="" />
         </div>
         <div className="input py-7">
-          <button 
-          disabled={loading}
+          <button
+            disabled={loading}
             className="bg-gradient-to-r from-cyan-500 to-blue-500 px-10 py-3 rounded-full text-white hover:bg-gradient-to-l min-w-40"
             id=""
           >

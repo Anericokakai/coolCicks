@@ -85,7 +85,7 @@ function InspectPage() {
 
     e.target.className = "price";
     const result = await axios.get(
-      `https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}`
+      `http://localhost:7001/api/coolcicks/v1/filter_deep?id=${catId}`
     );
   };
 

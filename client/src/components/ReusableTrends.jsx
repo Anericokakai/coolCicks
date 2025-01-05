@@ -21,7 +21,7 @@ function ReusableTrends({ singlecategory }) {
         setloadingtrends(true);
         await axios
           .get(
-            `https://coolcicks.onrender.com/api/coolciks/v1/fetchByTrend?category=${singlecategory.category_Name}`
+            `http://localhost:7001/api/coolciks/v1/fetchByTrend?category=${singlecategory.category_Name}`
           )
           .then((res) => {
             const result1 = res.data.data;

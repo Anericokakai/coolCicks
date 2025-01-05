@@ -9,7 +9,7 @@ const uploadAxios = axios.create({
   baseURL: import.meta.env.VITE_CLOUDIMAGE_API,
 });
 export const UploadimageToCloudinary = async (file,setPercentage) => {
-
+console.log(file)
   const images = new FormData();
   images.append("file", file);
   images.append("upload_preset", import.meta.env.VITE_SECRETE_KEY_CLOUDINARY);

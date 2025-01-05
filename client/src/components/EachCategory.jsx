@@ -22,7 +22,7 @@ function EachCategory() {
   const paramsContainer = new URLSearchParams(window.location.search);
   const [loading3, setloading3] = useState(false);
   const category = paramsContainer.get("category");
-  
+
   const catId = paramsContainer.get("catId");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,7 +55,7 @@ function EachCategory() {
     setloading3(true);
     await axios
       .get(
-        `https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&price=${selectedPriceFilter}&color=${color_Filter}`
+        `http://localhost:7001/api/coolcicks/v1/filter_deep?id=${catId}&price=${selectedPriceFilter}&color=${color_Filter}`
       )
       .then((result) => {
         dispatch(setNewData(result.data));
@@ -87,7 +87,7 @@ function EachCategory() {
     setloading3(true);
     await axios
       .get(
-        `https://coolcicks.onrender.com/api/coolcicks/v1/filter_deep?id=${catId}&price=${price}`
+        `http://localhost:7001/api/coolcicks/v1/filter_deep?id=${catId}&price=${price}`
       )
       .then((result) => {
         dispatch(setNewData(result.data));

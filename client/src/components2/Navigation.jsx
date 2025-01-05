@@ -112,8 +112,8 @@ function Navigation() {
   };
 
   return (
-    <div>
-      <nav className="nav">
+    <div >
+      <nav className="nav ">
         <div className="logoImage">
           <img src={logo} alt="" onClick={() => (window.location.href = "/")} />
         </div>
@@ -193,9 +193,9 @@ function Navigation() {
           </div>
         </ul>
       </nav>
-      <div className="inputsSearch">
-        <div className="searchBar" id="search">
-          <div className="searchContainer">
+      <div className="inputsSearch border">
+        <div className="searchBar  w-full" id="search">
+          <div className="searchContainer ">
             <input
               type="text"
               name="search"
