@@ -4,40 +4,9 @@ import { shoeCollection } from "../../database/schemas/ShoeSchema.js";
 // !MIDDLE WARE TO HANDLE THE  FILTERING API
 export const filters_middleware = async (req, res, next) => {
   try {
-    // ! randomly select the category and color from the data base
+  
 
-    const randomColorFromDb = await shoeCollection.distinct("color");
-
-    let randomColors = [];
-
-    // !loop throug the random colors
-    randomColorFromDb.forEach((single_color) => {
-      randomColors.push(single_color);
-    });
-
-    // ! categories randomly selected
-    const randomcategoriesFromDb = await categoryCollection.distinct(
-      "category_Name"
-    );
-
-    // !loop through the categories
-    let randomCategory = [];
-    randomcategoriesFromDb.forEach((single_category) => {
-      randomCategory.push(single_category);
-    });
-
-    const randomCategoryNumber = Math.floor(
-      Math.random() * randomCategory.length
-    );
-
-    const randomColorNumber = Math.floor(Math.random() * randomColors.length);
-    const header = req.query.category || randomCategory[randomCategoryNumber];
-    const priceFilter = req.query.price || 1;
-
-    const companyFilter = req.query.company || "nike";
-
-    const colorFilter = req.query.color || randomColors[randomColorNumber];
-    const filterc = randomColors[randomColorNumber];
+    const header = req.query.category ;
 
     const data = await shoeCollection.aggregate([
       {
@@ -55,7 +24,7 @@ export const filters_middleware = async (req, res, next) => {
       },
       {
         $sort: {
-          price: priceFilter,
+          price: 1,
         },
       },
       {

@@ -24,9 +24,8 @@ default_shopingRoutes.get('/api/coolcicks/v1/categories',(req,res)=>{
 
 export const fetchDetailed_category=Router()
 
-fetchDetailed_category.get('/api/coolcicks/v1/categoryProduct',filters_middleware,(req,res)=>{
-    
-})
+fetchDetailed_category.get('/api/coolcicks/v1/categoryProduct',filters_middleware)
+
 
 
 // !FILTER VIA THE TRENDING  CATEGORIES

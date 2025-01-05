@@ -19,8 +19,8 @@ import { add_category } from "./routes/Admin/AdminRoutes.js";
 // ! START OF CONFIGURING FILES
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // !END OF CONFIGURING FILES
 

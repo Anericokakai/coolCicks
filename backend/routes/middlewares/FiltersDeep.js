@@ -32,7 +32,8 @@ export const filterDeepMiddleware = async (req, res, next) => {
       },
     ]);
 
-    console.log(data);
+    
+  
     res.status(200).json({ data });
   } else if (priceFilter && !colorFilter && !companyFilter && id) {
     const data = await shoeCollection
