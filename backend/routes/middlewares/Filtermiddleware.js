@@ -67,7 +67,7 @@ export const filters_middleware = async (req, res, next) => {
       },
     ]);
 
-    res.status(200).json({ data, filterc });
+    res.status(200).json(data);
 
     // !filter the data  fill the pages of the same categories
   } catch (error) {
