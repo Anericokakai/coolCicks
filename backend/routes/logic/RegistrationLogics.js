@@ -16,9 +16,7 @@ const hashedPass= req.hashedPass
 
         const  newUser=await userCollection.create({
             userName:name,
-            user_Phone:phone,
             userEmail:email,
-           
             password:hashedPass
         })
 res.status(200).json({message:'user created successfully',user:newUser})
